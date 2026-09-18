@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Home",
+    "supplements": "Supplements",
+    "essentialOils": "Essential Oils",
+    "personalCare": "Personal Care",
+    "weightManagement": "Weight Management",
+    "distributor": "Become a Distributor"
+  },
+  "hero": {
+    "title": "Premium Wellness,",
+    "subtitle": "Backed by Science.",
+    "description": "Experience the power of 100% natural, clinically studied formulations designed to elevate your daily health, beauty, and vitality.",
+    "explore": "Explore Products",
+    "story": "Learn Our Story"
+  }
+}

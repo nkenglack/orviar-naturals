@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "supplements": "Compléments",
+    "essentialOils": "Huiles Essentielles",
+    "personalCare": "Soins Personnels",
+    "weightManagement": "Gestion du Poids",
+    "distributor": "Devenir Distributeur"
+  },
+  "hero": {
+    "title": "Bien-être Premium,",
+    "subtitle": "Appuyé par la Science.",
+    "description": "Découvrez le pouvoir de formulations 100% naturelles et cliniquement étudiées, conçues pour sublimer votre santé et votre vitalité au quotidien.",
+    "explore": "Explorer les Produits",
+    "story": "Notre Histoire"
+  }
+}
