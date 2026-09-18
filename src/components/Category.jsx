@@ -2,24 +2,38 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Box, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { products as catalog } from '../data/products';
 
 const Category = () => {
   const { name } = useParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const { t, i18n } = useTranslation();
+
+  const isFrench = i18n.language.startsWith('fr');
 
   const formatTitle = (str) => {
-    if (!str || str === 'all-products') return 'All Products';
+    if (!str || str === 'all-products') {
+      return isFrench ? 'Tous les Produits' : 'All Products';
+    }
     return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
 
   const categoryTitle = formatTitle(name);
 
-  // Filter products based on URL parameter and search query
+  // Filter products based on category and search bar
   const displayedProducts = catalog
     .filter(p => (name === 'all-products' || !name) ? true : p.category === name)
     .filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
+
+  // Dynamic helper to generate description in the active language
+  const getProductDescription = (productTitle) => {
+    if (isFrench) {
+      return `Formule pure et hautement concentrée de ${productTitle}, élaborée selon des normes de qualité strictes pour soutenir votre santé au quotidien.`;
+    }
+    return `Pure, high-potency ${productTitle} formulated according to strict quality standards to support your daily health and natural wellness routine.`;
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
@@ -35,23 +49,25 @@ const Category = () => {
             {categoryTitle}
           </h1>
           <p className="text-lg text-green-100 mb-8">
-            Explore our complete portfolio of 100% natural, science-backed formulations.
+            {isFrench 
+              ? 'Découvrez notre gamme complète de formulations 100% naturelles et appuyées par la science.'
+              : 'Explore our complete portfolio of 100% natural, science-backed formulations.'}
           </p>
           <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium transition-colors">
-            <ArrowLeft size={18} /> Back to Home
+            <ArrowLeft size={18} /> {isFrench ? 'Retour à l\'Accueil' : 'Back to Home'}
           </Link>
         </motion.div>
       </div>
 
-      {/* Search Bar & Grid Container */}
+      {/* Search Bar & Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Search Bar */}
+        {/* Search Input */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
             type="text" 
-            placeholder="Search products..."
+            placeholder={isFrench ? "Rechercher un produit..." : "Search products..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
@@ -78,7 +94,9 @@ const Category = () => {
                 />
                 <div className="hidden text-gray-400 flex-col items-center gap-2 group-hover:scale-110 transition-transform duration-500">
                   <Box size={32} />
-                  <span className="text-xs font-medium tracking-wide uppercase">Image Pending</span>
+                  <span className="text-xs font-medium tracking-wide uppercase">
+                    {isFrench ? 'Image en attente' : 'Image Pending'}
+                  </span>
                 </div>
               </div>
               
@@ -88,7 +106,7 @@ const Category = () => {
                 </span>
                 <h3 className="text-base font-bold text-gray-900 mb-4 line-clamp-2">{product.title}</h3>
                 <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-semibold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-sm">
-                  View Details
+                  {isFrench ? 'Voir Détails' : 'View Details'}
                 </button>
               </div>
             </motion.div>
@@ -97,12 +115,12 @@ const Category = () => {
 
         {displayedProducts.length === 0 && (
           <div className="text-center py-16 text-gray-500">
-            No products found matching "{searchQuery}".
+            {isFrench ? `Aucun produit ne correspond à "${searchQuery}".` : `No products found matching "${searchQuery}".`}
           </div>
         )}
       </div>
 
-      {/* Modal Popup for Product Details */}
+      {/* Localized Modal Overlay */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
@@ -137,13 +155,13 @@ const Category = () => {
                 </span>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedProduct.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                  {selectedProduct.description}
+                  {getProductDescription(selectedProduct.title)}
                 </p>
                 <button 
                   onClick={() => setSelectedProduct(null)}
                   className="w-full py-3.5 bg-brand-green text-white rounded-xl font-bold hover:bg-green-800 transition-colors shadow-md"
                 >
-                  Close Details
+                  {isFrench ? 'Fermer les Détails' : 'Close Details'}
                 </button>
               </div>
             </motion.div>
