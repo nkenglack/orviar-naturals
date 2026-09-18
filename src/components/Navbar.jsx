@@ -9,13 +9,15 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Toggle between English and French
+  // Safe fallback guard against undefined i18n.language
+  const currentLang = i18n.language || 'en';
+  const isFrench = currentLang.toLowerCase().startsWith('fr');
+
+  // Toggle active language cleanly
   const toggleLanguage = () => {
-    const nextLang = i18n.language.startsWith('fr') ? 'en' : 'fr';
+    const nextLang = isFrench ? 'en' : 'fr';
     i18n.changeLanguage(nextLang);
   };
-
-  const currentLangDisplay = i18n.language.startsWith('fr') ? 'EN' : 'FR';
 
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
@@ -46,15 +48,16 @@ const Navbar = () => {
             </Link>
           </div>
           
-          {/* Desktop Right Side Actions (Language Switcher + CTA) */}
+          {/* Desktop Right Actions (Language Switcher + CTA) */}
           <div className="hidden md:flex items-center gap-4">
             <button 
+              type="button"
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 text-xs font-bold text-gray-700 hover:border-brand-green hover:text-brand-green transition-all uppercase"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 text-xs font-bold text-gray-700 hover:border-brand-green hover:text-brand-green transition-all uppercase cursor-pointer"
               title="Switch Language"
             >
               <Globe size={14} className="text-brand-green" />
-              <span>{currentLangDisplay}</span>
+              <span>{isFrench ? 'EN' : 'FR'}</span>
             </button>
 
             <Link to="/distributor" className="bg-brand-green text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-green-800 transition-all shadow-md">
@@ -62,14 +65,15 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Actions (Language Switcher + Mobile Menu Button) */}
+          {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-3">
             <button 
+              type="button"
               onClick={toggleLanguage}
-              className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-gray-200 text-xs font-bold text-gray-700 uppercase"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-gray-300 text-xs font-bold text-gray-700 uppercase cursor-pointer"
             >
               <Globe size={13} className="text-brand-green" />
-              <span>{currentLangDisplay}</span>
+              <span>{isFrench ? 'EN' : 'FR'}</span>
             </button>
 
             <button

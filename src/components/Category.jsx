@@ -11,23 +11,32 @@ const Category = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { t, i18n } = useTranslation();
 
-  const isFrench = i18n.language.startsWith('fr');
+  const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
 
-  const formatTitle = (str) => {
-    if (!str || str === 'all-products') {
-      return isFrench ? 'Tous les Produits' : 'All Products';
+  // Map category URL routes directly to translation dictionary keys
+  const getCategoryTitle = (catName) => {
+    switch (catName) {
+      case 'supplements':
+        return t('nav.supplements');
+      case 'essential-oils':
+        return t('nav.essentialOils');
+      case 'personal-care':
+        return t('nav.personalCare');
+      case 'weight-management':
+        return t('nav.weightManagement');
+      default:
+        return isFrench ? 'Tous les Produits' : 'All Products';
     }
-    return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
 
-  const categoryTitle = formatTitle(name);
+  const categoryTitle = getCategoryTitle(name);
 
-  // Filter products based on category and search bar
+  // Filter products by active category and search bar
   const displayedProducts = catalog
     .filter(p => (name === 'all-products' || !name) ? true : p.category === name)
     .filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
-  // Dynamic helper to generate description in the active language
+  // Generate dynamic product descriptions in active language
   const getProductDescription = (productTitle) => {
     if (isFrench) {
       return `Formule pure et hautement concentrée de ${productTitle}, élaborée selon des normes de qualité strictes pour soutenir votre santé au quotidien.`;
@@ -59,10 +68,10 @@ const Category = () => {
         </motion.div>
       </div>
 
-      {/* Search Bar & Grid */}
+      {/* Search & Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Search Input */}
+        {/* Search Bar */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
@@ -95,14 +104,14 @@ const Category = () => {
                 <div className="hidden text-gray-400 flex-col items-center gap-2 group-hover:scale-110 transition-transform duration-500">
                   <Box size={32} />
                   <span className="text-xs font-medium tracking-wide uppercase">
-                    {isFrench ? 'Image en attente' : 'Image Pending'}
+                    {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
                   </span>
                 </div>
               </div>
               
               <div className="p-5 flex flex-col flex-grow items-center text-center">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {formatTitle(product.category)}
+                  {getCategoryTitle(product.category)}
                 </span>
                 <h3 className="text-base font-bold text-gray-900 mb-4 line-clamp-2">{product.title}</h3>
                 <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-semibold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-sm">
@@ -120,7 +129,7 @@ const Category = () => {
         )}
       </div>
 
-      {/* Localized Modal Overlay */}
+      {/* Modal Popup */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
@@ -151,7 +160,7 @@ const Category = () => {
               
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {formatTitle(selectedProduct.category)}
+                  {getCategoryTitle(selectedProduct.category)}
                 </span>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedProduct.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-8">

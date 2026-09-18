@@ -14,7 +14,15 @@ i18n
       fr: { translation: fr }
     },
     fallbackLng: 'en',
-    interpolation: { escapeValue: false }
+    supportedLngs: ['en', 'fr'],
+    nonExplicitSupportedLngs: true,
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage']
+    },
+    interpolation: { 
+      escapeValue: false 
+    }
   });
 
 export default i18n;

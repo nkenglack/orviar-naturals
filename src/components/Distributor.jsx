@@ -1,97 +1,111 @@
-import { TrendingUp, Percent, Award } from 'lucide-react';
+import { useState } from 'react';
+import { Building2, TrendingUp, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Distributor = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const { t } = useTranslation();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   const benefits = [
     {
-      icon: <Percent className="w-6 h-6 text-brand-green" />,
-      title: 'Wholesale Pricing',
-      description: 'Access exclusive tier-based pricing to maximize your profit margins across our entire catalog.'
+      icon: <TrendingUp className="text-brand-green w-6 h-6" />,
+      title: t('distributor.benefit1Title'),
+      description: t('distributor.benefit1Desc')
     },
     {
-      icon: <Award className="w-6 h-6 text-brand-gold" />,
-      title: 'Premium Catalog',
-      description: 'Offer your clients 100% natural, science-backed formulas that actually deliver results.'
+      icon: <Building2 className="text-brand-gold w-6 h-6" />,
+      title: t('distributor.benefit2Title'),
+      description: t('distributor.benefit2Desc')
     },
     {
-      icon: <TrendingUp className="w-6 h-6 text-brand-blue" />,
-      title: 'Dedicated Support',
-      description: 'Get direct access to our team for product education, marketing materials, and order assistance.'
+      icon: <ShieldCheck className="text-brand-blue w-6 h-6" />,
+      title: t('distributor.benefit3Title'),
+      description: t('distributor.benefit3Desc')
     }
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-24">
-      
-      {/* Page Header */}
-      <div className="bg-brand-green py-20 text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-          Partner With Orviar
-        </h1>
-        <p className="text-lg text-green-100 max-w-2xl mx-auto">
-          Join our global network of distributors and bring premium, science-backed wellness to your community.
-        </p>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12">
-          
-          {/* Benefits Column */}
-          <div className="lg:w-1/2 mt-16 lg:mt-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Distribute Orviar Naturals?</h2>
-            <div className="space-y-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0">
-                    {benefit.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">{benefit.title}</h4>
-                    <p className="text-gray-600">{benefit.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Application Form Card */}
-          <div className="lg:w-1/2">
-            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Distributor Application</h3>
-              <form className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="John" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Doe" />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                  <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="john@example.com" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Company / Business Name (Optional)</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all" placeholder="Your Business Inc." />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Tell us about your distribution channel</label>
-                  <textarea rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 outline-none transition-all resize-none" placeholder="e.g., Physical clinic, online store, regional distribution..."></textarea>
-                </div>
-
-                <button type="button" className="w-full bg-brand-green text-white font-bold py-4 rounded-xl shadow-lg shadow-green-900/20 hover:bg-green-800 transition-colors mt-4">
-                  Submit Application
-                </button>
-              </form>
-            </div>
-          </div>
-
+    <div className="bg-gray-50 min-h-screen py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Banner */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-bold text-brand-green uppercase tracking-widest block mb-2">{t('distributor.tag')}</span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">{t('distributor.title')}</h1>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {t('distributor.subtitle')}
+          </p>
         </div>
+
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {benefits.map((item, idx) => (
+            <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+              <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-6">
+                {item.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Form Container */}
+        <div className="max-w-2xl mx-auto bg-white p-8 sm:p-12 rounded-3xl shadow-sm border border-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t('distributor.formTitle')}</h2>
+          
+          {submitted ? (
+            <div className="text-center py-12">
+              <CheckCircle2 size={56} className="text-brand-green mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('distributor.success')}</h3>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.fullName')}</label>
+                <input required type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none" />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.email')}</label>
+                  <input required type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.phone')}</label>
+                  <input required type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.businessName')}</label>
+                  <input required type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.businessType')}</label>
+                  <input required type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">{t('distributor.message')}</label>
+                <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-green focus:border-transparent outline-none"></textarea>
+              </div>
+
+              <button type="submit" className="w-full py-4 bg-brand-green text-white font-bold rounded-xl hover:bg-green-800 transition-colors shadow-md">
+                {t('distributor.submit')}
+              </button>
+            </form>
+          )}
+        </div>
+
       </div>
     </div>
   );

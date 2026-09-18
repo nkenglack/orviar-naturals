@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           
-          {/* Brand Column */}
+          {/* Brand Info */}
           <div>
             <span className="font-bold text-2xl text-white tracking-widest uppercase mb-6 block">ORVIAR</span>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
@@ -18,19 +18,39 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links Column */}
+          {/* Quick Links */}
           <div>
             <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/category/supplements" className="hover:text-brand-green transition-colors">{t('footer.shopSupplements')}</Link></li>
-              <li><Link to="/category/essential-oils" className="hover:text-brand-green transition-colors">{t('footer.essentialOils')}</Link></li>
-              <li><Link to="/distributor" className="hover:text-brand-green transition-colors">{t('footer.becomeDistributor')}</Link></li>
-              <li><Link to="/category/privacy-policy" className="hover:text-brand-green transition-colors">{t('footer.privacyPolicy')}</Link></li>
-              <li><Link to="/category/terms-of-service" className="hover:text-brand-green transition-colors">{t('footer.termsOfService')}</Link></li>
+              <li>
+                <Link to="/category/supplements" className="hover:text-brand-green transition-colors">
+                  {t('footer.shopSupplements')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/essential-oils" className="hover:text-brand-green transition-colors">
+                  {t('footer.essentialOils')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/distributor" className="hover:text-brand-green transition-colors">
+                  {t('footer.becomeDistributor')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-brand-green transition-colors">
+                  {t('footer.privacyPolicy')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-brand-green transition-colors">
+                  {t('footer.termsOfService')}
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Column */}
+          {/* Contact Details */}
           <div>
             <h4 className="text-white font-bold mb-6 uppercase text-sm tracking-wider">{t('footer.contactUs')}</h4>
             <ul className="space-y-4 text-sm">
@@ -50,7 +70,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Disclaimer & Copyright */}
+        {/* Legal Disclaimer & Copyright */}
         <div className="pt-8 border-t border-gray-800 text-xs text-gray-500 text-center space-y-4 mt-12">
           <p>{t('footer.disclaimer')}</p>
           <p>&copy; {new Date().getFullYear()} Orviar Naturals. {t('footer.rights')}</p>

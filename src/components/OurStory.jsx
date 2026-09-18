@@ -1,23 +1,26 @@
 import { ShieldCheck, Heart, Sparkles, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const OurStory = () => {
+  const { t } = useTranslation();
+
   const pillars = [
     {
       icon: <ShieldCheck className="w-8 h-8 text-brand-green" />,
-      title: 'Science-Backed Purity',
-      description: 'We combine rigorous scientific research with nature’s finest botanicals to craft formulas that deliver real, measurable results.'
+      title: t('ourStory.pillar1Title'),
+      description: t('ourStory.pillar1Desc')
     },
     {
       icon: <Heart className="w-8 h-8 text-brand-gold" />,
-      title: 'Customer-Centric Focus',
-      description: 'Living by our rule—"The customer is the final filter"—every product must meet strict standards of safety, quality, and efficacy.'
+      title: t('ourStory.pillar2Title'),
+      description: t('ourStory.pillar2Desc')
     },
     {
       icon: <Sparkles className="w-8 h-8 text-brand-blue" />,
-      title: '100% Natural Excellence',
-      description: 'No fillers, synthetic shortcuts, or questionable additives. Just pure, functional ingredients carefully sourced for maximum potency.'
+      title: t('ourStory.pillar3Title'),
+      description: t('ourStory.pillar3Desc')
     }
   ];
 
@@ -30,12 +33,12 @@ const OurStory = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto"
         >
-          <span className="text-sm font-bold text-brand-green tracking-widest uppercase mb-3 block">About Orviar Naturals</span>
+          <span className="text-sm font-bold text-brand-green tracking-widest uppercase mb-3 block">{t('ourStory.tag')}</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Our Story & Philosophy
+            {t('ourStory.title')}
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Working together for a healthier world by bridging the gap between natural healing traditions and modern clinical science.
+            {t('ourStory.subtitle')}
           </p>
         </motion.div>
       </div>
@@ -50,13 +53,13 @@ const OurStory = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl font-extrabold text-gray-900 mb-6">
-              Rooted in Nature, Validated by Science
+              {t('ourStory.narrativeTitle')}
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Orviar Naturals was founded on a simple premise: everyday wellness solutions should never force a compromise between natural ingredients and proven results.
+              {t('ourStory.p1')}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              From our flagship probiotic blends to pure essential oils and skincare serums, every item in our portfolio undergoes thorough quality testing to support your body from the inside out.
+              {t('ourStory.p2')}
             </p>
           </motion.div>
 
@@ -69,15 +72,15 @@ const OurStory = () => {
           >
             <div>
               <Award className="w-16 h-16 text-brand-green mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Uncompromising Quality</h3>
-              <p className="text-sm text-gray-500">Certified facilities & third-party verified formulations.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{t('ourStory.boxTitle')}</h3>
+              <p className="text-sm text-gray-500">{t('ourStory.boxDesc')}</p>
             </div>
           </motion.div>
         </div>
 
         {/* Core Pillars */}
         <div className="mb-20">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">Our Core Commitments</h3>
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">{t('ourStory.commitmentsTitle')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((pillar, idx) => (
               <div key={idx} className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-center">
@@ -93,22 +96,22 @@ const OurStory = () => {
 
         {/* Call to Action Banner */}
         <div className="bg-gray-900 rounded-3xl p-10 md:p-14 text-center text-white">
-          <h3 className="text-3xl font-extrabold mb-4">Join Our Growing Mission</h3>
+          <h3 className="text-3xl font-extrabold mb-4">{t('ourStory.ctaTitle')}</h3>
           <p className="text-gray-400 max-w-xl mx-auto mb-8">
-            Whether you are looking to elevate your personal routine or partner with us as an authorized distributor, we welcome you to the Orviar family.
+            {t('ourStory.ctaDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               to="/category/all-products" 
               className="bg-brand-green text-white px-8 py-3.5 rounded-full font-bold hover:bg-green-800 transition-colors"
             >
-              Explore Products
+              {t('hero.explore')}
             </Link>
             <Link 
               to="/distributor" 
               className="bg-white text-gray-900 px-8 py-3.5 rounded-full font-bold hover:bg-gray-100 transition-colors"
             >
-              Become a Distributor
+              {t('nav.distributor')}
             </Link>
           </div>
         </div>
