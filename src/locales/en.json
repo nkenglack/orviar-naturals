@@ -10,8 +10,58 @@
   "hero": {
     "title": "Premium Wellness,",
     "subtitle": "Backed by Science.",
-    "description": "Experience the power of 100% natural, clinically studied formulations designed to elevate your daily health, beauty, and vitality.",
+    "description": "Experience the power of 100% natural, clinically studied formulations designed to elevate your daily health, beauty, and vitality from the inside out.",
     "explore": "Explore Products",
     "story": "Learn Our Story"
+  },
+  "about": {
+    "tag": "Purity & Quality First",
+    "title": "Natural Formulations Rooted in Scientific Rigor",
+    "p1": "At Orviar Naturals, we bridge the gap between traditional herbal wellness and modern clinical science. Every product is engineered to deliver measurable health benefits without compromise.",
+    "p2": "We source 100% pure botanical extracts and non-GMO ingredients, enforcing strict quality controls so you receive products that truly work.",
+    "stat1Label": "Natural Extracts",
+    "stat1Value": "100%",
+    "stat2Label": "Quality Tested",
+    "stat2Value": "Third-Party",
+    "stat3Label": "Customer First",
+    "stat3Value": "Standard"
+  },
+  "featured": {
+    "tag": "Handpicked Essentials",
+    "title": "Featured Formulations",
+    "viewDetails": "View Details"
+  },
+  "ingredients": {
+    "tag": "What Goes Inside",
+    "title": "Sourced from Nature, Proven by Science",
+    "subtitle": "We select active botanicals and essential bio-available nutrients for maximum absorption and efficacy.",
+    "ing1Title": "Clinically Studied Strains",
+    "ing1Desc": "High-potency probiotics engineered for digestive health and daily immune resilience.",
+    "ing2Title": "Botanical Extracts",
+    "ing2Desc": "Ethically sourced Ashwagandha, Turmeric, and Curcumin for natural balance and vitality.",
+    "ing3Title": "Pure Essential Oils",
+    "ing3Desc": "Cold-pressed and steam-distilled pure oils designed for deep aromatherapy and skin care."
+  },
+  "testimonials": {
+    "tag": "Community Feedback",
+    "title": "Trusted by Wellness Enthusiasts",
+    "quote1": "Orviar's probiotic formulation transformed my daily digestive balance within weeks. Pure quality you can feel.",
+    "quote1Author": "Sarah M., Toronto",
+    "quote2": "The essential oils are genuinely pure. As a holistic practitioner, I highly recommend Orviar to my clients.",
+    "quote2Author": "David K., Vancouver",
+    "quote3": "Becoming an authorized distributor was smooth and straightforward. A brand that truly stands behind its product quality.",
+    "quote3Author": "Elena R., Montreal"
+  },
+  "footer": {
+    "tagline": "Working Together for a Healthier World. Premium, science-backed supplements and natural wellness solutions.",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "shopSupplements": "Shop Supplements",
+    "essentialOils": "Essential Oils",
+    "becomeDistributor": "Become a Distributor",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.",
+    "rights": "All rights reserved."
   }
 }

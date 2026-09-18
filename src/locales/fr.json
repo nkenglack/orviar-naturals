@@ -10,8 +10,58 @@
   "hero": {
     "title": "Bien-être Premium,",
     "subtitle": "Appuyé par la Science.",
-    "description": "Découvrez le pouvoir de formulations 100% naturelles et cliniquement étudiées, conçues pour sublimer votre santé et votre vitalité au quotidien.",
+    "description": "Découvrez le pouvoir de formulations 100% naturelles et cliniquement étudiées, conçues pour sublimer votre santé, votre beauté et votre vitalité au quotidien.",
     "explore": "Explorer les Produits",
     "story": "Notre Histoire"
+  },
+  "about": {
+    "tag": "Rigueur & Pureté d'Abord",
+    "title": "Formulations Naturelles Ancrées dans la Rigueur Scientifique",
+    "p1": "Chez Orviar Naturals, nous faisons le lien entre la phytothérapie traditionnelle et la science clinique moderne. Chaque produit est conçu pour apporter de vrais bienfaits mesurables.",
+    "p2": "Nous sélectionnons des extraits botaniques 100% purs et non-OGM avec des contrôles de qualité stricts pour vous garantir des résultats authentiques.",
+    "stat1Label": "Extraits Naturels",
+    "stat1Value": "100%",
+    "stat2Label": "Tests Qualité",
+    "stat2Value": "Indépendants",
+    "stat3Label": "Satisfaction",
+    "stat3Value": "Prioritaire"
+  },
+  "featured": {
+    "tag": "Incontournables Sélectionnés",
+    "title": "Formulations Vedettes",
+    "viewDetails": "Voir Détails"
+  },
+  "ingredients": {
+    "tag": "Ce Que Contiennent Nos Produits",
+    "title": "Puisé dans la Nature, Validé par la Science",
+    "subtitle": "Nous sélectionnons des actifs botaniques et nutriments essentiels hautement bio-disponibles pour une efficacité maximale.",
+    "ing1Title": "Souches Cliniquement Étudiées",
+    "ing1Desc": "Probiotiques à forte concentration pour soutenir la santé digestive et l'immunité au quotidien.",
+    "ing2Title": "Extraits Botaniques",
+    "ing2Desc": "Ashwagandha, curcuma et curcumine issus de sources éthiques pour vitalité et équilibre naturel.",
+    "ing3Title": "Huiles Essentielles Pures",
+    "ing3Desc": "Huiles pures pressées à froid et distillées à la vapeur pour l'aromathérapie et les soins cutanés."
+  },
+  "testimonials": {
+    "tag": "Avis de la Communauté",
+    "title": "Approuvé par les Passionnés de Santé",
+    "quote1": "La formule de probiotiques Orviar a transformé ma digestion en quelques semaines. Une qualité remarquable.",
+    "quote1Author": "Sarah M., Toronto",
+    "quote2": "Les huiles essentielles sont véritablement pures. En tant que praticien holistique, je recommande vivement Orviar.",
+    "quote2Author": "David K., Vancouver",
+    "quote3": "Devenir distributeur agréé a été simple et rapide. Une marque qui soutient vraiment la qualité de ses produits.",
+    "quote3Author": "Elena R., Montréal"
+  },
+  "footer": {
+    "tagline": "Ensemble pour un monde plus sain. Compléments alimentaires haut de gamme et solutions de bien-être naturelles.",
+    "quickLinks": "Liens Rapides",
+    "contactUs": "Contactez-Nous",
+    "shopSupplements": "Compléments Alimentaires",
+    "essentialOils": "Huiles Essentielles",
+    "becomeDistributor": "Devenir Distributeur",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "disclaimer": "*Ces déclarations n'ont pas été évaluées par la Santé Canada ou la FDA. Ces produits ne sont pas destinés à diagnostiquer, traiter, guérir ou prévenir une maladie.",
+    "rights": "Tous droits réservés."
   }
 }
