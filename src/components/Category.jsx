@@ -1,26 +1,25 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Box, X } from 'lucide-react';
+import { ArrowLeft, Box, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { products as catalog } from '../data/products';
 
 const Category = () => {
   const { name } = useParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const formatTitle = (str) => {
-    if (!str) return 'All Products';
+    if (!str || str === 'all-products') return 'All Products';
     return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };
 
   const categoryTitle = formatTitle(name);
 
-  // We dynamically generate 6 placeholder products with detailed descriptions instead of prices
-  const products = Array.from({ length: 6 }).map((_, i) => ({
-    id: i + 1,
-    title: `Premium ${categoryTitle} ${i + 1}`,
-    description: `This premium ${categoryTitle.toLowerCase()} blend is formulated with clinically studied, 100% natural ingredients. Designed for maximum absorption and efficacy to support your daily wellness journey without any synthetic fillers or artificial additives.`,
-    image: ''
-  }));
+  // Filter products based on URL parameter and search query
+  const displayedProducts = catalog
+    .filter(p => (name === 'all-products' || !name) ? true : p.category === name)
+    .filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
@@ -36,7 +35,7 @@ const Category = () => {
             {categoryTitle}
           </h1>
           <p className="text-lg text-green-100 mb-8">
-            Explore our clinically studied, 100% natural {categoryTitle.toLowerCase()} designed for ultimate wellness.
+            Explore our complete portfolio of 100% natural, science-backed formulations.
           </p>
           <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium transition-colors">
             <ArrowLeft size={18} /> Back to Home
@@ -44,43 +43,66 @@ const Category = () => {
         </motion.div>
       </div>
 
-      {/* Product Grid Template */}
+      {/* Search Bar & Grid Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {products.map((product, index) => (
+        
+        {/* Search Bar */}
+        <div className="max-w-md mx-auto mb-10 relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+          <input 
+            type="text" 
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
+          />
+        </div>
+
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {displayedProducts.map((product, index) => (
             <motion.div 
               key={product.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: Math.min(index * 0.05, 0.5) }}
               className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
               onClick={() => setSelectedProduct(product)}
             >
-              {/* Image Placeholder Box */}
-              <div className="h-72 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
-                {product.image ? (
-                  <img src={product.image} alt={product.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                ) : (
-                  <div className="text-gray-400 flex flex-col items-center gap-2 group-hover:scale-110 transition-transform duration-500">
-                    <Box size={32} />
-                    <span className="text-sm font-medium tracking-wide uppercase">Image Slot</span>
-                  </div>
-                )}
+              <div className="h-64 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
+                <img 
+                  src={product.image} 
+                  alt={product.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                />
+                <div className="hidden text-gray-400 flex-col items-center gap-2 group-hover:scale-110 transition-transform duration-500">
+                  <Box size={32} />
+                  <span className="text-xs font-medium tracking-wide uppercase">Image Pending</span>
+                </div>
               </div>
               
-              {/* Product Details */}
-              <div className="p-6 flex flex-col flex-grow items-center text-center">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">{product.title}</h3>
-                <button className="w-full py-3 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-semibold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto">
+              <div className="p-5 flex flex-col flex-grow items-center text-center">
+                <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
+                  {formatTitle(product.category)}
+                </span>
+                <h3 className="text-base font-bold text-gray-900 mb-4 line-clamp-2">{product.title}</h3>
+                <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-semibold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-sm">
                   View Details
                 </button>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {displayedProducts.length === 0 && (
+          <div className="text-center py-16 text-gray-500">
+            No products found matching "{searchQuery}".
+          </div>
+        )}
       </div>
 
-      {/* Interactive Product Modal overlay */}
+      {/* Modal Popup for Product Details */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
@@ -98,16 +120,20 @@ const Category = () => {
               </button>
               
               <div className="h-64 bg-gray-100 flex items-center justify-center relative">
-                {selectedProduct.image ? (
-                  <img src={selectedProduct.image} alt={selectedProduct.title} className="w-full h-full object-cover" />
-                ) : (
-                  <Box size={48} className="text-gray-300" />
-                )}
+                <img 
+                  src={selectedProduct.image} 
+                  alt={selectedProduct.title} 
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                />
+                <div className="hidden text-gray-400 flex-col items-center gap-2">
+                  <Box size={48} />
+                </div>
               </div>
               
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {categoryTitle}
+                  {formatTitle(selectedProduct.category)}
                 </span>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedProduct.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-8">
