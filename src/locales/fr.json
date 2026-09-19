@@ -25,7 +25,7 @@
     "card3Title": "Qualité Supérieure",
     "card3Desc": "Testé par des laboratoires indépendants et fabriqué dans des installations certifiées pour garantir une pureté ultime.",
     "card4Title": "Le Client d'Abord",
-    "card4Desc": "« Le client est le filtre final. » Notre mission est d'apporter une valeur authentique à votre vie et à votre santé."
+    "card4Desc": "Le client est le filtre final. Notre mission est d'apporter une valeur authentique à votre vie et à votre santé."
   },
   "featured": {
     "tag": "GAMME PREMIUM",
@@ -58,6 +58,45 @@
     "ing3Title": "Collagène Marin",
     "ing3Subtitle": "Élasticité de la Peau & Anti-Âge",
     "ing3Desc": "Formule beauté d'exception qui combat les radicaux libres, favorise la fermeté de la peau et réduit l'apparence des rides."
+  },
+  "distributor": {
+    "tag": "Partenaire de Distribution",
+    "title": "Devenir un Distributeur Agréé",
+    "subtitle": "Rejoignez notre réseau mondial de détaillants, praticiens de santé et spécialistes du bien-être proposant la gamme Orviar.",
+    "benefit1Title": "Tarification de Gros",
+    "benefit1Desc": "Bénéficiez de marges compétitives et de réductions sur le volume adaptées aux exigences du commerce de détail.",
+    "benefit2Title": "Soutien Marketing",
+    "benefit2Desc": "Accédez à des visuels haute définition, des supports promotionnels et une assistance dédiée.",
+    "benefit3Title": "Qualité Garantie",
+    "benefit3Desc": "Distribuez des formules hautement concentrées vérifiées par des tiers en toute sérénité.",
+    "formTitle": "Formulaire de Candidature Distributeur",
+    "fullName": "Nom Complet",
+    "email": "Adresse Courriel",
+    "phone": "Numéro de Téléphone",
+    "businessName": "Nom de l'Entreprise",
+    "businessType": "Secteur d'Activité",
+    "message": "Présentez-nous votre entreprise",
+    "submit": "Soumettre la Candidature",
+    "success": "Candidature reçue ! Notre équipe vous contactera très rapidement."
+  },
+  "ourStory": {
+    "tag": "À Propos d'Orviar Naturals",
+    "title": "Notre Histoire & Philosophie",
+    "subtitle": "Travailler ensemble pour un monde plus sain en faisant le pont entre les traditions naturelles et la science clinique moderne.",
+    "narrativeTitle": "Ancré dans la Nature, Validé par la Science",
+    "p1": "Orviar Naturals a été fondé sur un principe simple : les solutions de bien-être au quotidien ne devraient jamais imposer de compromis entre ingrédients naturels et résultats prouvés.",
+    "p2": "De nos mélanges probiotiques phares à nos huiles essentielles pures et nos sérums pour la peau, chaque article de notre gamme subit des tests de qualité rigoureux.",
+    "boxTitle": "Qualité Sans Compromis",
+    "boxDesc": "Installations certifiées et formulations vérifiées par des laboratoires indépendants.",
+    "commitmentsTitle": "Nos Engagements Fondamentaux",
+    "pillar1Title": "Pureté Appuyée par la Science",
+    "pillar1Desc": "Nous combinons une recherche scientifique rigoureuse avec les meilleurs extraits botaniques pour des résultats réels et mesurables.",
+    "pillar2Title": "Priorité au Client",
+    "pillar2Desc": "Fidèles à notre règle — 'Le client est le filtre final' — chaque produit doit respecter des normes strictes de sécurité, de qualité et d'efficacité.",
+    "pillar3Title": "Excellence 100% Naturelle",
+    "pillar3Desc": "Sans agents de remplissage ni additifs douteux. Uniquement des ingrédients purs et fonctionnels soigneusement sélectionnés.",
+    "ctaTitle": "Rejoignez Notre Mission",
+    "ctaDesc": "Que vous souhaitiez enrichir votre routine personnelle ou devenir un distributeur agréé, bienvenue dans la famille Orviar."
   },
   "testimonials": {
     "tag": "TÉMOIGNAGES RÉELS",

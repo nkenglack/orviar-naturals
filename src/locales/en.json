@@ -25,7 +25,7 @@
     "card3Title": "Premium Quality",
     "card3Desc": "Third-party tested and manufactured in certified facilities to guarantee ultimate purity.",
     "card4Title": "Customer First",
-    "card4Desc": "\"The customer is the final filter.\" We are on a mission to add genuine value to your life and health."
+    "card4Desc": "The customer is the final filter. We are on a mission to add genuine value to your life and health."
   },
   "featured": {
     "tag": "Premium Portfolio",
@@ -58,6 +58,45 @@
     "ing3Title": "Marine Collagen",
     "ing3Subtitle": "Skin Elasticity & Anti-Aging",
     "ing3Desc": "Premium beauty formula that combats free radicals, promotes skin firmness, and helps reduce the appearance of fine lines."
+  },
+  "distributor": {
+    "tag": "Partner With Us",
+    "title": "Become an Authorized Distributor",
+    "subtitle": "Join our global network of retail partners, healthcare practitioners, and wellness stockists bringing premium Orviar formulations to market.",
+    "benefit1Title": "Wholesale Pricing",
+    "benefit1Desc": "Enjoy competitive margin structures and bulk volume discounts tailored for retail profitability.",
+    "benefit2Title": "Marketing Support",
+    "benefit2Desc": "Access high-resolution brand assets, promotional collaterals, and dedicated partner support.",
+    "benefit3Title": "Guaranteed Quality",
+    "benefit3Desc": "Distribute third-party verified, high-potency formulations with total peace of mind.",
+    "formTitle": "Distributor Application Form",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "businessName": "Business Name",
+    "businessType": "Business Type",
+    "message": "Tell us about your business",
+    "submit": "Submit Application",
+    "success": "Application Received! Our team will contact you shortly."
+  },
+  "ourStory": {
+    "tag": "About Orviar Naturals",
+    "title": "Our Story & Philosophy",
+    "subtitle": "Working together for a healthier world by bridging the gap between natural healing traditions and modern clinical science.",
+    "narrativeTitle": "Rooted in Nature, Validated by Science",
+    "p1": "Orviar Naturals was founded on a simple premise: everyday wellness solutions should never force a compromise between natural ingredients and proven results.",
+    "p2": "From our flagship probiotic blends to pure essential oils and skincare serums, every item in our portfolio undergoes thorough quality testing to support your body from the inside out.",
+    "boxTitle": "Uncompromising Quality",
+    "boxDesc": "Certified facilities & third-party verified formulations.",
+    "commitmentsTitle": "Our Core Commitments",
+    "pillar1Title": "Science-Backed Purity",
+    "pillar1Desc": "We combine rigorous scientific research with nature’s finest botanicals to craft formulas that deliver real, measurable results.",
+    "pillar2Title": "Customer-Centric Focus",
+    "pillar2Desc": "Living by our rule—'The customer is the final filter'—every product must meet strict standards of safety, quality, and efficacy.",
+    "pillar3Title": "100% Natural Excellence",
+    "pillar3Desc": "No fillers, synthetic shortcuts, or questionable additives. Just pure, functional ingredients carefully sourced for maximum potency.",
+    "ctaTitle": "Join Our Growing Mission",
+    "ctaDesc": "Whether you are looking to elevate your personal routine or partner with us as an authorized distributor, we welcome you to the Orviar family."
   },
   "testimonials": {
     "tag": "Real Stories",

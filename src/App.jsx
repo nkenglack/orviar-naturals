@@ -14,28 +14,19 @@ import OurStory from './components/OurStory';
 
 function App() {
   const { i18n } = useTranslation();
-  const [currentLang, setCurrentLang] = useState(i18n.language || 'en');
+  const [lang, setLang] = useState(i18n.language || 'en');
 
-  // Listen directly to i18n language changes and force a top-level re-render
   useEffect(() => {
-    const handleLanguageChange = (lng) => {
-      setCurrentLang(lng);
-    };
-
-    i18n.on('languageChanged', handleLanguageChange);
-
-    return () => {
-      i18n.off('languageChanged', handleLanguageChange);
-    };
+    const onLangChange = (newLang) => setLang(newLang);
+    i18n.on('languageChanged', onLangChange);
+    return () => i18n.off('languageChanged', onLangChange);
   }, [i18n]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans" key={currentLang}>
+    <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans" key={lang}>
       <Navbar />
-      
       <div className="flex-grow">
         <Routes>
-          {/* Main Homepage Route */}
           <Route 
             path="/" 
             element={
@@ -48,14 +39,11 @@ function App() {
               </main>
             } 
           />
-          
-          {/* Subpages & Category Routes */}
           <Route path="/category/:name" element={<Category />} />
           <Route path="/distributor" element={<Distributor />} />
           <Route path="/our-story" element={<OurStory />} />
         </Routes>
       </div>
-
       <Footer />
     </div>
   );

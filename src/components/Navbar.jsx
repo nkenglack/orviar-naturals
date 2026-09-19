@@ -9,11 +9,9 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Safe fallback guard against undefined i18n.language
   const currentLang = i18n.language || 'en';
   const isFrench = currentLang.toLowerCase().startsWith('fr');
 
-  // Toggle active language cleanly
   const toggleLanguage = () => {
     const nextLang = isFrench ? 'en' : 'fr';
     i18n.changeLanguage(nextLang);
@@ -22,11 +20,13 @@ const Navbar = () => {
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20 items-center">
+        <div className="flex justify-between h-24 items-center">
           
-          {/* Brand Logo */}
+          {/* Doubled Brand Logo Size */}
           <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer">
-            <span className="font-bold text-2xl text-brand-green tracking-widest uppercase">ORVIAR</span>
+            <span className="font-extrabold text-4xl sm:text-5xl text-brand-green tracking-widest uppercase">
+              ORVIAR
+            </span>
           </Link>
           
           {/* Desktop Navigation Links */}
@@ -48,13 +48,12 @@ const Navbar = () => {
             </Link>
           </div>
           
-          {/* Desktop Right Actions (Language Switcher + CTA) */}
+          {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
             <button 
               type="button"
               onClick={toggleLanguage}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 text-xs font-bold text-gray-700 hover:border-brand-green hover:text-brand-green transition-all uppercase cursor-pointer"
-              title="Switch Language"
             >
               <Globe size={14} className="text-brand-green" />
               <span>{isFrench ? 'EN' : 'FR'}</span>
