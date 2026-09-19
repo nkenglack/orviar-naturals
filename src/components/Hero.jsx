@@ -54,7 +54,7 @@ const Hero = () => {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            {/* Direct route fix: /our-story */}
+            {/* Direct standalone route */}
             <Link 
               to="/our-story" 
               className="w-full sm:w-auto px-8 py-4 bg-white text-gray-800 font-bold rounded-full border border-gray-200 hover:bg-gray-50 transition-all flex items-center justify-center text-base"
