@@ -1,47 +1,115 @@
-import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Box, X, Search } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { ArrowLeft, Box, X, Search, Tag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { products as catalog } from '../data/products';
 
 const Category = () => {
-  const { name } = useParams();
+  const { name, type, benefit } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const { t, i18n } = useTranslation();
 
   const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
 
-  // Map category URL routes directly to translation dictionary keys
-  const getCategoryTitle = (catName) => {
-    switch (catName) {
-      case 'supplements':
-        return t('nav.supplements');
-      case 'essential-oils':
-        return t('nav.essentialOils');
-      case 'personal-care':
-        return t('nav.personalCare');
-      case 'weight-management':
-        return t('nav.weightManagement');
-      default:
-        return isFrench ? 'Tous les Produits' : 'All Products';
+  // Search state synced with URL query
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('search') || '');
+  }, [searchParams]);
+
+  // Pillar & Sub-category mappings
+  const getHeaderInfo = () => {
+    if (benefit) {
+      const benefitTitles = {
+        'digestion': { en: 'Digestion & Gut Health', fr: 'Digestion et Santé Intestinale' },
+        'hair-nails': { en: 'Hair & Nail Growth', fr: 'Croissance Cheveux et Ongles' },
+        'skin-antiaging': { en: 'Skin Radiance & Anti-Aging', fr: 'Éclat de la Peau et Anti-Âge' },
+        'weight-metabolism': { en: 'Weight & Metabolism', fr: 'Gestion du Poids et Métabolisme' },
+        'immunity-vitality': { en: 'Immunity & Daily Vitality', fr: 'Immunité et Vitalité' },
+        'stress-sleep': { en: 'Stress Relief & Sleep', fr: 'Anti-Stress et Sommeil' },
+        'joints-inflammation': { en: 'Joints & Inflammation', fr: 'Articulations et Anti-Inflammatoire' },
+        'hormonal-wellness': { en: 'Hormonal & Sexual Wellness', fr: 'Équilibre Hormonal et Libido' }
+      };
+      const b = benefitTitles[benefit];
+      return b ? (isFrench ? b.fr : b.en) : (isFrench ? 'Bénéfices Santé' : 'Health Benefits');
     }
+
+    if (type) {
+      const typeTitles = {
+        'supplements': { en: 'Dietary Supplements', fr: 'Compléments Alimentaires' },
+        'superfoods': { en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
+        'teas': { en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
+        'oils': { en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
+        'beauty': { en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
+        'home-wellness': { en: 'Home Wellness', fr: 'Bien-être de la Maison' }
+      };
+      const tInfo = typeTitles[type];
+      return tInfo ? (isFrench ? tInfo.fr : tInfo.en) : (isFrench ? 'Catégories' : 'Categories');
+    }
+
+    if (name && name !== 'all') {
+      return name.replace('-', ' ').toUpperCase();
+    }
+
+    return isFrench ? 'Tous Nos Produits' : 'All Products';
   };
 
-  const categoryTitle = getCategoryTitle(name);
+  const title = getHeaderInfo();
 
-  // Filter products by active category and search bar
-  const displayedProducts = catalog
-    .filter(p => (name === 'all-products' || !name) ? true : p.category === name)
-    .filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
-
-  // Generate dynamic product descriptions in active language
-  const getProductDescription = (productTitle) => {
-    if (isFrench) {
-      return `Formule pure et hautement concentrée de ${productTitle}, élaborée selon des normes de qualité strictes pour soutenir votre santé au quotidien.`;
+  // Multi-tier filtering: Product Type + Health Benefit Pillar + Search Query
+  const filteredProducts = catalog.filter(product => {
+    // 1. Filter by Product Category/Type
+    if (type && product.category !== type) {
+      return false;
     }
-    return `Pure, high-potency ${productTitle} formulated according to strict quality standards to support your daily health and natural wellness routine.`;
+
+    // 2. Filter by Health Benefit Pillar
+    if (benefit) {
+      const benefitKeywords = {
+        'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit'],
+        'hair-nails': ['hair', 'nail', 'dandruff', 'cheveux', 'ongles'],
+        'skin-antiaging': ['skin', 'acne', 'aging', 'wrinkle', 'peau', 'éclat'],
+        'weight-metabolism': ['weight', 'satiety', 'glycemia', 'metabolism', 'poids'],
+        'immunity-vitality': ['immune', 'energy', 'antioxidant', 'vitality', 'énergie'],
+        'stress-sleep': ['stress', 'sleep', 'relax', 'mood', 'sommeil'],
+        'joints-inflammation': ['joint', 'inflammation', 'muscle', 'articulation'],
+        'hormonal-wellness': ['hormon', 'libido', 'men', 'women', 'prostate']
+      };
+
+      const keywords = benefitKeywords[benefit] || [];
+      const productBenefits = [...(product.benefits || []), ...(product.benefits_fr || [])].join(' ').toLowerCase();
+      const matchesBenefit = keywords.some(kw => productBenefits.includes(kw));
+      if (!matchesBenefit) return false;
+    }
+
+    // 3. Filter by Search Query (Title, Description, or Tags)
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const titleMatch = (isFrench ? product.title_fr : product.title).toLowerCase().includes(q);
+      const descMatch = (isFrench ? product.description_fr : product.description).toLowerCase().includes(q);
+      const tagMatch = [...(product.benefits || []), ...(product.benefits_fr || [])].some(b => b.toLowerCase().includes(q));
+      return titleMatch || descMatch || tagMatch;
+    }
+
+    return true;
+  });
+
+  const handleTagClick = (tag) => {
+    setSearchQuery(tag);
+    setSearchParams({ search: tag });
+  };
+
+  const handleSearchChange = (e) => {
+    const val = e.target.value;
+    setSearchQuery(val);
+    if (val) {
+      setSearchParams({ search: val });
+    } else {
+      setSearchParams({});
+    }
   };
 
   return (
@@ -54,13 +122,13 @@ const Category = () => {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            {categoryTitle}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight capitalize">
+            {title}
           </h1>
           <p className="text-lg text-green-100 mb-8">
             {isFrench 
-              ? 'Découvrez notre gamme complète de formulations 100% naturelles et appuyées par la science.'
-              : 'Explore our complete portfolio of 100% natural, science-backed formulations.'}
+              ? 'Découvrez nos formulations botaniques 100% naturelles vérifiées par la science.'
+              : 'Explore our 100% natural, science-backed botanical formulations.'}
           </p>
           <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium transition-colors">
             <ArrowLeft size={18} /> {isFrench ? 'Retour à l\'Accueil' : 'Back to Home'}
@@ -68,80 +136,122 @@ const Category = () => {
         </motion.div>
       </div>
 
-      {/* Search & Products Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Search Bar */}
+        {/* Filter & Search Bar */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
             type="text" 
-            placeholder={isFrench ? "Rechercher un produit..." : "Search products..."}
+            placeholder={isFrench ? "Rechercher un produit ou un bénéfice..." : "Search products or health benefit..."}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
+            onChange={handleSearchChange}
+            className="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
           />
-        </div>
-
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {displayedProducts.map((product, index) => (
-            <motion.div 
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: Math.min(index * 0.05, 0.5) }}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
-              onClick={() => setSelectedProduct(product)}
+          {searchQuery && (
+            <button 
+              onClick={() => { setSearchQuery(''); setSearchParams({}); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
             >
-              <div className="h-64 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
-                <img 
-                  src={product.image} 
-                  alt={product.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                />
-                <div className="hidden text-gray-400 flex-col items-center gap-2 group-hover:scale-110 transition-transform duration-500">
-                  <Box size={32} />
-                  <span className="text-xs font-medium tracking-wide uppercase">
-                    {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-5 flex flex-col flex-grow items-center text-center">
-                <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {getCategoryTitle(product.category)}
-                </span>
-                <h3 className="text-base font-bold text-gray-900 mb-4 line-clamp-2">{product.title}</h3>
-                <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-semibold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-sm">
-                  {isFrench ? 'Voir Détails' : 'View Details'}
-                </button>
-              </div>
-            </motion.div>
-          ))}
+              <X size={18} />
+            </button>
+          )}
         </div>
 
-        {displayedProducts.length === 0 && (
-          <div className="text-center py-16 text-gray-500">
-            {isFrench ? `Aucun produit ne correspond à "${searchQuery}".` : `No products found matching "${searchQuery}".`}
+        {/* Product Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredProducts.map((product, index) => {
+            const productTitle = isFrench ? product.title_fr : product.title;
+            const productDesc = isFrench ? product.description_fr : product.description;
+            const benefitTags = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
+
+            return (
+              <motion.div 
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: Math.min(index * 0.04, 0.4) }}
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
+                onClick={() => setSelectedProduct(product)}
+              >
+                {/* Image Area */}
+                <div className="h-60 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
+                  <img 
+                    src={product.image} 
+                    alt={productTitle} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                  />
+                  <div className="hidden text-gray-400 flex-col items-center gap-2">
+                    <Box size={36} />
+                    <span className="text-[10px] font-bold tracking-widest uppercase">
+                      {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Body Area */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-wider mb-2 block">
+                    {product.product_type}
+                  </span>
+                  <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{productTitle}</h3>
+                  <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{productDesc}</p>
+
+                  {/* Benefit Tags */}
+                  {benefitTags && benefitTags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
+                      {benefitTags.slice(0, 3).map((tag, tIdx) => (
+                        <button 
+                          key={tIdx}
+                          onClick={(e) => { e.stopPropagation(); handleTagClick(tag); }}
+                          className="inline-flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1 bg-green-50 text-brand-green rounded-full hover:bg-brand-green hover:text-white transition-colors"
+                        >
+                          <Tag size={10} />
+                          <span>{tag}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-bold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-xs uppercase tracking-wider">
+                    {isFrench ? 'Voir Détails' : 'View Details'}
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-20 text-gray-500 bg-white rounded-3xl p-8 border border-gray-100 max-w-md mx-auto">
+            <p className="text-base font-medium mb-2">
+              {isFrench ? `Aucun produit trouvé pour "${searchQuery}".` : `No products found matching "${searchQuery}".`}
+            </p>
+            <button 
+              onClick={() => { setSearchQuery(''); setSearchParams({}); }}
+              className="text-xs font-bold text-brand-green underline mt-2"
+            >
+              {isFrench ? 'Réinitialiser la recherche' : 'Reset search filter'}
+            </button>
           </div>
         )}
       </div>
 
-      {/* Modal Popup */}
+      {/* Modal View */}
       <AnimatePresence>
         {selectedProduct && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden relative"
+              className="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden relative"
             >
               <button 
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors z-10 shadow-sm"
+                className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-600 hover:text-gray-900 transition-colors z-10 shadow-sm"
               >
                 <X size={20} />
               </button>
@@ -149,7 +259,7 @@ const Category = () => {
               <div className="h-64 bg-gray-100 flex items-center justify-center relative">
                 <img 
                   src={selectedProduct.image} 
-                  alt={selectedProduct.title} 
+                  alt={isFrench ? selectedProduct.title_fr : selectedProduct.title} 
                   className="w-full h-full object-cover"
                   onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                 />
@@ -160,12 +270,29 @@ const Category = () => {
               
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {getCategoryTitle(selectedProduct.category)}
+                  {selectedProduct.product_type}
                 </span>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{selectedProduct.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-8">
-                  {getProductDescription(selectedProduct.title)}
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {isFrench ? selectedProduct.title_fr : selectedProduct.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  {isFrench ? selectedProduct.description_fr : selectedProduct.description}
                 </p>
+
+                {/* All Modal Tags */}
+                <div className="mb-8">
+                  <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">
+                    {isFrench ? 'Bénéfices Clés :' : 'Key Benefits:'}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {(isFrench ? (selectedProduct.benefits_fr || selectedProduct.benefits) : selectedProduct.benefits).map((b, idx) => (
+                      <span key={idx} className="inline-flex items-center gap-1 text-xs font-semibold px-3 py-1 bg-green-50 text-brand-green rounded-full">
+                        <Tag size={12} /> {b}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
                 <button 
                   onClick={() => setSelectedProduct(null)}
                   className="w-full py-3.5 bg-brand-green text-white rounded-xl font-bold hover:bg-green-800 transition-colors shadow-md"
