@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [navSearch, setNavSearch] = useState('');
-  const [activeDropdown, setActiveDropdown] = useState(null); // 'products' | 'benefits' | null
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
@@ -26,12 +26,13 @@ const Navbar = () => {
     }
   };
 
-  // Removed 'Beauty & Hair Care' - 5 core product categories remain
+  // Restored Beauty & Hair Care sub-category
   const productSubCategories = [
     { key: 'supplements', en: 'Dietary Supplements', fr: 'Compléments Alimentaires' },
     { key: 'superfoods', en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
     { key: 'teas', en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
     { key: 'oils', en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
+    { key: 'beauty', en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
     { key: 'home-wellness', en: 'Home Wellness', fr: 'Bien-être de la Maison' }
   ];
 
@@ -51,17 +52,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-24 items-center gap-4">
           
-          {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer">
             <span className="font-extrabold text-3xl sm:text-4xl text-brand-green tracking-widest uppercase">
               ORVIAR
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-6 relative">
-            
-            {/* HOME */}
             <Link to="/" className="text-gray-700 hover:text-brand-green font-medium text-sm transition-colors">
               {isFrench ? 'ACCUEIL' : 'HOME'}
             </Link>
@@ -78,7 +75,7 @@ const Navbar = () => {
               </button>
 
               {activeDropdown === 'products' && (
-                <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 shadow-xl rounded-2xl py-3 z-50 animate-fadeIn">
+                <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 shadow-xl rounded-2xl py-3 z-50">
                   <Link 
                     to="/category/all" 
                     onClick={() => setActiveDropdown(null)}
@@ -112,7 +109,7 @@ const Navbar = () => {
               </button>
 
               {activeDropdown === 'benefits' && (
-                <div className="absolute top-full left-0 w-72 bg-white border border-gray-100 shadow-xl rounded-2xl py-3 z-50 animate-fadeIn">
+                <div className="absolute top-full left-0 w-72 bg-white border border-gray-100 shadow-xl rounded-2xl py-3 z-50">
                   {healthBenefitPillars.map(pillar => (
                     <Link
                       key={pillar.key}
@@ -127,13 +124,11 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* BLOG */}
             <Link to="/blog" className="text-gray-700 hover:text-brand-green font-medium text-sm transition-colors uppercase">
               BLOG
             </Link>
           </div>
 
-          {/* Search Bar & Actions */}
           <div className="hidden lg:flex items-center gap-4">
             <form onSubmit={handleSearchSubmit} className="relative w-48 xl:w-60">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
@@ -149,7 +144,7 @@ const Navbar = () => {
             <button 
               type="button"
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 text-xs font-bold text-gray-700 hover:border-brand-green hover:text-brand-green transition-all uppercase"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-300 text-xs font-bold text-gray-700 hover:border-brand-green hover:text-brand-green transition-all uppercase cursor-pointer"
             >
               <Globe size={14} className="text-brand-green" />
               <span>{isFrench ? 'EN' : 'FR'}</span>
@@ -160,7 +155,6 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Drawer Trigger */}
           <div className="md:hidden flex items-center gap-3">
             <button 
               type="button"
@@ -179,7 +173,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 px-4 pt-4 pb-8 space-y-4 max-h-[85vh] overflow-y-auto">
           <form onSubmit={handleSearchSubmit} className="relative w-full">

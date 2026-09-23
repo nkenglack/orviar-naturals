@@ -9,18 +9,16 @@ const Category = () => {
   const { name, type, benefit } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
 
-  // Search input state
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
 
   useEffect(() => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
-  // Header Titles
   const getHeaderInfo = () => {
     if (benefit) {
       const benefitTitles = {
@@ -43,6 +41,7 @@ const Category = () => {
         'superfoods': { en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
         'teas': { en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
         'oils': { en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
+        'beauty': { en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
         'home-wellness': { en: 'Home Wellness', fr: 'Bien-être de la Maison' }
       };
       const tInfo = typeTitles[type];
@@ -58,43 +57,47 @@ const Category = () => {
 
   const title = getHeaderInfo();
 
-  // Robust Categorization Matching
+  // Product Filtering Engine
   const filteredProducts = catalog.filter(product => {
     
-    // 1. Filter by Product Category Type
+    // 1. Sub-category type filter
     if (type) {
       const pt = (product.product_type || '').toLowerCase();
+      const ptFr = (product.product_type_fr || '').toLowerCase();
       const cat = (product.category || '').toLowerCase();
 
-      if (type === 'supplements') {
-        const matchesSupp = cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || pt.includes('beauty care') || pt.includes('hair care') || pt.includes('soin');
-        if (!matchesSupp) return false;
+      if (type === 'beauty') {
+        const isBeauty = cat === 'beauty' || pt.includes('beauty') || pt.includes('hair') || ptFr.includes('beauté') || ptFr.includes('capillaire') || ptFr.includes('soin');
+        if (!isBeauty) return false;
+      } else if (type === 'supplements') {
+        const isSupp = (cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || ptFr.includes('complément')) && cat !== 'beauty';
+        if (!isSupp) return false;
       } else if (type === 'superfoods') {
-        const matchesSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('poudre') || pt.includes('spice') || pt.includes('épice') || pt.includes('superaliment');
-        if (!matchesSuper) return false;
+        const isSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('spice') || ptFr.includes('poudre') || ptFr.includes('superaliment') || ptFr.includes('épice');
+        if (!isSuper) return false;
       } else if (type === 'teas') {
-        const matchesTeas = cat === 'teas' || pt.includes('tea') || pt.includes('tisane') || pt.includes('infusion');
-        if (!matchesTeas) return false;
+        const isTea = cat === 'teas' || pt.includes('tea') || ptFr.includes('tisane') || ptFr.includes('infusion');
+        if (!isTea) return false;
       } else if (type === 'oils') {
-        const matchesOils = cat === 'oils' || pt.includes('oil') || pt.includes('huile');
-        if (!matchesOils) return false;
+        const isOil = cat === 'oils' || pt.includes('oil') || ptFr.includes('huile');
+        if (!isOil) return false;
       } else if (type === 'home-wellness') {
-        const matchesHome = cat === 'home-wellness' || pt.includes('home') || pt.includes('maison') || pt.includes('lamp') || pt.includes('salt');
-        if (!matchesHome) return false;
+        const isHome = cat === 'home-wellness' || pt.includes('home') || ptFr.includes('maison') || pt.includes('lamp') || pt.includes('salt');
+        if (!isHome) return false;
       }
     }
 
-    // 2. Filter by Health Benefit Pillar
+    // 2. Health Benefit Pillar filter
     if (benefit) {
       const benefitKeywords = {
-        'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit', 'digestive', 'satiety', 'gas', 'laxative'],
-        'hair-nails': ['hair', 'nail', 'dandruff', 'cheveux', 'ongles', 'scalp', 'follicle', 'growth'],
-        'skin-antiaging': ['skin', 'acne', 'aging', 'wrinkle', 'peau', 'éclat', 'complexion', 'collagen', 'hydration', 'radiance', 'blemish'],
-        'weight-metabolism': ['weight', 'satiety', 'glycemia', 'metabolism', 'poids', 'fat', 'calorie', 'slim'],
-        'immunity-vitality': ['immune', 'energy', 'antioxidant', 'vitality', 'énergie', 'fatigue', 'defense', 'vitamin'],
-        'stress-sleep': ['stress', 'sleep', 'relax', 'mood', 'sommeil', 'calm', 'anxiety', 'brain', 'focus', 'memory', 'cognitive'],
-        'joints-inflammation': ['joint', 'inflammation', 'muscle', 'articulation', 'pain', 'relief', 'flexibility', 'swelling'],
-        'hormonal-wellness': ['hormon', 'libido', 'men', 'women', 'prostate', 'fertility', 'reproductive', 'testosterone', 'estrogen']
+        'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit', 'digestive', 'satiety', 'gas', 'laxative', 'estomac', 'intestin'],
+        'hair-nails': ['hair', 'nail', 'dandruff', 'cheveux', 'ongles', 'scalp', 'follicle', 'growth', 'pousse', 'cuir chevelu'],
+        'skin-antiaging': ['skin', 'acne', 'aging', 'wrinkle', 'peau', 'éclat', 'complexion', 'collagen', 'hydration', 'radiance', 'blemish', 'ride', 'visage'],
+        'weight-metabolism': ['weight', 'satiety', 'glycemia', 'metabolism', 'poids', 'fat', 'calorie', 'slim', 'brûle', 'graisse'],
+        'immunity-vitality': ['immune', 'energy', 'antioxidant', 'vitality', 'énergie', 'fatigue', 'defense', 'vitamin', 'immunité', 'tonus'],
+        'stress-sleep': ['stress', 'sleep', 'relax', 'mood', 'sommeil', 'calm', 'anxiety', 'brain', 'focus', 'memory', 'cognitive', 'humeur', 'mémoire'],
+        'joints-inflammation': ['joint', 'inflammation', 'muscle', 'articulation', 'pain', 'relief', 'flexibility', 'swelling', 'douleur', 'souplesse'],
+        'hormonal-wellness': ['hormon', 'libido', 'men', 'women', 'prostate', 'fertility', 'reproductive', 'testosterone', 'estrogen', 'homme', 'femme']
       };
 
       const keywords = benefitKeywords[benefit] || [];
@@ -108,12 +111,12 @@ const Category = () => {
       if (!matchesBenefit) return false;
     }
 
-    // 3. Filter by Search Query
+    // 3. Search query filter
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
-      const titleMatch = (isFrench ? product.title_fr : product.title).toLowerCase().includes(q);
-      const descMatch = (isFrench ? product.description_fr : product.description).toLowerCase().includes(q);
-      const tagMatch = [...(product.benefits || []), ...(product.benefits_fr || [])].some(b => b.toLowerCase().includes(q));
+      const titleMatch = (isFrench ? (product.title_fr || product.title) : product.title).toLowerCase().includes(q);
+      const descMatch = (isFrench ? (product.description_fr || product.description) : product.description).toLowerCase().includes(q);
+      const tagMatch = (isFrench ? (product.benefits_fr || product.benefits) : product.benefits).some(b => b.toLowerCase().includes(q));
       return titleMatch || descMatch || tagMatch;
     }
 
@@ -138,7 +141,7 @@ const Category = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
       
-      {/* Category Header Banner */}
+      {/* Category Banner */}
       <div className="bg-brand-green py-16 text-center px-4 mb-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -161,7 +164,7 @@ const Category = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* On-Page Search Input */}
+        {/* Search Bar */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
@@ -181,12 +184,14 @@ const Category = () => {
           )}
         </div>
 
-        {/* Product Cards Grid */}
+        {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => {
-            const productTitle = isFrench ? (product.title_fr || product.title) : product.title;
-            const productDesc = isFrench ? (product.description_fr || product.description) : product.description;
-            const benefitTags = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
+            // STRICT LANGUAGE ASSIGNMENT
+            const displayTitle = isFrench ? (product.title_fr || product.title) : product.title;
+            const displayDesc = isFrench ? (product.description_fr || product.description) : product.description;
+            const displayType = isFrench ? (product.product_type_fr || product.product_type) : product.product_type;
+            const displayBenefits = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
 
             return (
               <motion.div 
@@ -200,7 +205,7 @@ const Category = () => {
                 <div className="h-60 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
                   <img 
                     src={product.image} 
-                    alt={productTitle} 
+                    alt={displayTitle} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                   />
@@ -214,14 +219,14 @@ const Category = () => {
                 
                 <div className="p-6 flex flex-col flex-grow">
                   <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-wider mb-2 block">
-                    {product.product_type}
+                    {displayType}
                   </span>
-                  <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{productTitle}</h3>
-                  <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{productDesc}</p>
+                  <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{displayTitle}</h3>
+                  <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{displayDesc}</p>
 
-                  {benefitTags && benefitTags.length > 0 && (
+                  {displayBenefits && displayBenefits.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
-                      {benefitTags.slice(0, 3).map((tag, tIdx) => (
+                      {displayBenefits.slice(0, 3).map((tag, tIdx) => (
                         <button 
                           key={tIdx}
                           onClick={(e) => { e.stopPropagation(); handleTagClick(tag); }}
@@ -259,7 +264,7 @@ const Category = () => {
         )}
       </div>
 
-      {/* Detail Modal */}
+      {/* Modal View */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
@@ -290,7 +295,7 @@ const Category = () => {
               
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
-                  {selectedProduct.product_type}
+                  {isFrench ? (selectedProduct.product_type_fr || selectedProduct.product_type) : selectedProduct.product_type}
                 </span>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {isFrench ? (selectedProduct.title_fr || selectedProduct.title) : selectedProduct.title}
