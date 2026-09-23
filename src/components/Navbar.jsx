@@ -26,12 +26,12 @@ const Navbar = () => {
     }
   };
 
+  // Removed 'Beauty & Hair Care' - 5 core product categories remain
   const productSubCategories = [
     { key: 'supplements', en: 'Dietary Supplements', fr: 'Compléments Alimentaires' },
     { key: 'superfoods', en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
     { key: 'teas', en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
     { key: 'oils', en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
-    { key: 'beauty', en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
     { key: 'home-wellness', en: 'Home Wellness', fr: 'Bien-être de la Maison' }
   ];
 
@@ -58,7 +58,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-6 relative">
             
             {/* HOME */}
@@ -160,7 +160,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Icon */}
+          {/* Mobile Drawer Trigger */}
           <div className="md:hidden flex items-center gap-3">
             <button 
               type="button"
@@ -179,7 +179,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 px-4 pt-4 pb-8 space-y-4 max-h-[85vh] overflow-y-auto">
           <form onSubmit={handleSearchSubmit} className="relative w-full">

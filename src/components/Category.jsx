@@ -13,14 +13,14 @@ const Category = () => {
 
   const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
 
-  // Search state synced with URL query
+  // Search input state
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
 
   useEffect(() => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
-  // Pillar & Sub-category mappings
+  // Header Titles
   const getHeaderInfo = () => {
     if (benefit) {
       const benefitTitles = {
@@ -43,7 +43,6 @@ const Category = () => {
         'superfoods': { en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
         'teas': { en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
         'oils': { en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
-        'beauty': { en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
         'home-wellness': { en: 'Home Wellness', fr: 'Bien-être de la Maison' }
       };
       const tInfo = typeTitles[type];
@@ -59,33 +58,57 @@ const Category = () => {
 
   const title = getHeaderInfo();
 
-  // Multi-tier filtering: Product Type + Health Benefit Pillar + Search Query
+  // Robust Categorization Matching
   const filteredProducts = catalog.filter(product => {
-    // 1. Filter by Product Category/Type
-    if (type && product.category !== type) {
-      return false;
+    
+    // 1. Filter by Product Category Type
+    if (type) {
+      const pt = (product.product_type || '').toLowerCase();
+      const cat = (product.category || '').toLowerCase();
+
+      if (type === 'supplements') {
+        const matchesSupp = cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || pt.includes('beauty care') || pt.includes('hair care') || pt.includes('soin');
+        if (!matchesSupp) return false;
+      } else if (type === 'superfoods') {
+        const matchesSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('poudre') || pt.includes('spice') || pt.includes('épice') || pt.includes('superaliment');
+        if (!matchesSuper) return false;
+      } else if (type === 'teas') {
+        const matchesTeas = cat === 'teas' || pt.includes('tea') || pt.includes('tisane') || pt.includes('infusion');
+        if (!matchesTeas) return false;
+      } else if (type === 'oils') {
+        const matchesOils = cat === 'oils' || pt.includes('oil') || pt.includes('huile');
+        if (!matchesOils) return false;
+      } else if (type === 'home-wellness') {
+        const matchesHome = cat === 'home-wellness' || pt.includes('home') || pt.includes('maison') || pt.includes('lamp') || pt.includes('salt');
+        if (!matchesHome) return false;
+      }
     }
 
     // 2. Filter by Health Benefit Pillar
     if (benefit) {
       const benefitKeywords = {
-        'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit'],
-        'hair-nails': ['hair', 'nail', 'dandruff', 'cheveux', 'ongles'],
-        'skin-antiaging': ['skin', 'acne', 'aging', 'wrinkle', 'peau', 'éclat'],
-        'weight-metabolism': ['weight', 'satiety', 'glycemia', 'metabolism', 'poids'],
-        'immunity-vitality': ['immune', 'energy', 'antioxidant', 'vitality', 'énergie'],
-        'stress-sleep': ['stress', 'sleep', 'relax', 'mood', 'sommeil'],
-        'joints-inflammation': ['joint', 'inflammation', 'muscle', 'articulation'],
-        'hormonal-wellness': ['hormon', 'libido', 'men', 'women', 'prostate']
+        'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit', 'digestive', 'satiety', 'gas', 'laxative'],
+        'hair-nails': ['hair', 'nail', 'dandruff', 'cheveux', 'ongles', 'scalp', 'follicle', 'growth'],
+        'skin-antiaging': ['skin', 'acne', 'aging', 'wrinkle', 'peau', 'éclat', 'complexion', 'collagen', 'hydration', 'radiance', 'blemish'],
+        'weight-metabolism': ['weight', 'satiety', 'glycemia', 'metabolism', 'poids', 'fat', 'calorie', 'slim'],
+        'immunity-vitality': ['immune', 'energy', 'antioxidant', 'vitality', 'énergie', 'fatigue', 'defense', 'vitamin'],
+        'stress-sleep': ['stress', 'sleep', 'relax', 'mood', 'sommeil', 'calm', 'anxiety', 'brain', 'focus', 'memory', 'cognitive'],
+        'joints-inflammation': ['joint', 'inflammation', 'muscle', 'articulation', 'pain', 'relief', 'flexibility', 'swelling'],
+        'hormonal-wellness': ['hormon', 'libido', 'men', 'women', 'prostate', 'fertility', 'reproductive', 'testosterone', 'estrogen']
       };
 
       const keywords = benefitKeywords[benefit] || [];
-      const productBenefits = [...(product.benefits || []), ...(product.benefits_fr || [])].join(' ').toLowerCase();
-      const matchesBenefit = keywords.some(kw => productBenefits.includes(kw));
+      const combinedText = [
+        product.title, product.title_fr,
+        product.description, product.description_fr,
+        ...(product.benefits || []), ...(product.benefits_fr || [])
+      ].join(' ').toLowerCase();
+
+      const matchesBenefit = keywords.some(kw => combinedText.includes(kw));
       if (!matchesBenefit) return false;
     }
 
-    // 3. Filter by Search Query (Title, Description, or Tags)
+    // 3. Filter by Search Query
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const titleMatch = (isFrench ? product.title_fr : product.title).toLowerCase().includes(q);
@@ -115,7 +138,7 @@ const Category = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
       
-      {/* Category Header */}
+      {/* Category Header Banner */}
       <div className="bg-brand-green py-16 text-center px-4 mb-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -138,7 +161,7 @@ const Category = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Filter & Search Bar */}
+        {/* On-Page Search Input */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
@@ -161,20 +184,19 @@ const Category = () => {
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => {
-            const productTitle = isFrench ? product.title_fr : product.title;
-            const productDesc = isFrench ? product.description_fr : product.description;
+            const productTitle = isFrench ? (product.title_fr || product.title) : product.title;
+            const productDesc = isFrench ? (product.description_fr || product.description) : product.description;
             const benefitTags = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
 
             return (
               <motion.div 
-                key={product.id}
+                key={product.id || index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: Math.min(index * 0.04, 0.4) }}
                 className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
               >
-                {/* Image Area */}
                 <div className="h-60 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
                   <img 
                     src={product.image} 
@@ -190,7 +212,6 @@ const Category = () => {
                   </div>
                 </div>
                 
-                {/* Body Area */}
                 <div className="p-6 flex flex-col flex-grow">
                   <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-wider mb-2 block">
                     {product.product_type}
@@ -198,7 +219,6 @@ const Category = () => {
                   <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{productTitle}</h3>
                   <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{productDesc}</p>
 
-                  {/* Benefit Tags */}
                   {benefitTags && benefitTags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
                       {benefitTags.slice(0, 3).map((tag, tIdx) => (
@@ -227,19 +247,19 @@ const Category = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-20 text-gray-500 bg-white rounded-3xl p-8 border border-gray-100 max-w-md mx-auto">
             <p className="text-base font-medium mb-2">
-              {isFrench ? `Aucun produit trouvé pour "${searchQuery}".` : `No products found matching "${searchQuery}".`}
+              {isFrench ? `Aucun produit trouvé dans cette sélection.` : `No products found matching this filter.`}
             </p>
             <button 
               onClick={() => { setSearchQuery(''); setSearchParams({}); }}
               className="text-xs font-bold text-brand-green underline mt-2"
             >
-              {isFrench ? 'Réinitialiser la recherche' : 'Reset search filter'}
+              {isFrench ? 'Voir tous les produits' : 'View all products'}
             </button>
           </div>
         )}
       </div>
 
-      {/* Modal View */}
+      {/* Detail Modal */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
@@ -259,7 +279,7 @@ const Category = () => {
               <div className="h-64 bg-gray-100 flex items-center justify-center relative">
                 <img 
                   src={selectedProduct.image} 
-                  alt={isFrench ? selectedProduct.title_fr : selectedProduct.title} 
+                  alt={isFrench ? (selectedProduct.title_fr || selectedProduct.title) : selectedProduct.title} 
                   className="w-full h-full object-cover"
                   onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                 />
@@ -273,13 +293,12 @@ const Category = () => {
                   {selectedProduct.product_type}
                 </span>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {isFrench ? selectedProduct.title_fr : selectedProduct.title}
+                  {isFrench ? (selectedProduct.title_fr || selectedProduct.title) : selectedProduct.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  {isFrench ? selectedProduct.description_fr : selectedProduct.description}
+                  {isFrench ? (selectedProduct.description_fr || selectedProduct.description) : selectedProduct.description}
                 </p>
 
-                {/* All Modal Tags */}
                 <div className="mb-8">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">
                     {isFrench ? 'Bénéfices Clés :' : 'Key Benefits:'}
