@@ -19,6 +19,7 @@ const Category = () => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
+  // Header Title Logic
   const getHeaderInfo = () => {
     if (benefit) {
       const benefitTitles = {
@@ -48,19 +49,23 @@ const Category = () => {
       return tInfo ? (isFrench ? tInfo.fr : tInfo.en) : (isFrench ? 'Catégories' : 'Categories');
     }
 
-    if (name && name !== 'all') {
-      return name.replace('-', ' ').toUpperCase();
-    }
-
     return isFrench ? 'Tous Nos Produits' : 'All Products';
   };
 
   const title = getHeaderInfo();
 
-  // Product Filtering Engine
+  // Universal Filtering Engine
   const filteredProducts = catalog.filter(product => {
     
-    // 1. Sub-category type filter
+    // 1. If path is /category/all or /category/all-products, pass ALL products
+    if (name === 'all' || name === 'all-products' || (!name && !type && !benefit)) {
+      // Continue to search filter
+    } else if (name) {
+      // Legacy single category match fallback
+      if (product.category !== name) return false;
+    }
+
+    // 2. Sub-category type filter
     if (type) {
       const pt = (product.product_type || '').toLowerCase();
       const ptFr = (product.product_type_fr || '').toLowerCase();
@@ -87,7 +92,7 @@ const Category = () => {
       }
     }
 
-    // 2. Health Benefit Pillar filter
+    // 3. Health Benefit Pillar filter
     if (benefit) {
       const benefitKeywords = {
         'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit', 'digestive', 'satiety', 'gas', 'laxative', 'estomac', 'intestin'],
@@ -111,7 +116,7 @@ const Category = () => {
       if (!matchesBenefit) return false;
     }
 
-    // 3. Search query filter
+    // 4. On-page Search query filter
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const titleMatch = (isFrench ? (product.title_fr || product.title) : product.title).toLowerCase().includes(q);
@@ -164,7 +169,7 @@ const Category = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Search Bar */}
+        {/* On-page Search Input */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
@@ -184,10 +189,14 @@ const Category = () => {
           )}
         </div>
 
-        {/* Products Grid */}
+        {/* Total Count Badge */}
+        <div className="mb-6 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">
+          {isFrench ? `${filteredProducts.length} produits affichés` : `Showing ${filteredProducts.length} products`}
+        </div>
+
+        {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => {
-            // STRICT LANGUAGE ASSIGNMENT
             const displayTitle = isFrench ? (product.title_fr || product.title) : product.title;
             const displayDesc = isFrench ? (product.description_fr || product.description) : product.description;
             const displayType = isFrench ? (product.product_type_fr || product.product_type) : product.product_type;
@@ -195,10 +204,10 @@ const Category = () => {
 
             return (
               <motion.div 
-                key={product.id || index}
+                key={`${product.id}-${index}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: Math.min(index * 0.04, 0.4) }}
+                transition={{ delay: Math.min(index * 0.03, 0.3) }}
                 className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
                 onClick={() => setSelectedProduct(product)}
               >
@@ -252,7 +261,7 @@ const Category = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-20 text-gray-500 bg-white rounded-3xl p-8 border border-gray-100 max-w-md mx-auto">
             <p className="text-base font-medium mb-2">
-              {isFrench ? `Aucun produit trouvé dans cette sélection.` : `No products found matching this filter.`}
+              {isFrench ? `Aucun produit trouvé.` : `No products found.`}
             </p>
             <button 
               onClick={() => { setSearchQuery(''); setSearchParams({}); }}
@@ -264,7 +273,7 @@ const Category = () => {
         )}
       </div>
 
-      {/* Modal View */}
+      {/* Product Modal */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
