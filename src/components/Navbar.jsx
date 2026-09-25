@@ -54,10 +54,12 @@ const Navbar = () => {
           
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer">
-            <span className="font-extrabold text-3xl sm:text-4xl text-brand-green tracking-widest uppercase">
-              ORVIAR
-            </span>
-          </Link>
+  <img 
+    src="/logo.jpg" 
+    alt="Orviar Naturals" 
+    className="h-10 sm:h-12 w-auto object-contain"
+  />
+</Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 relative">
