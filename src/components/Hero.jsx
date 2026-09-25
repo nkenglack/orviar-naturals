@@ -20,7 +20,7 @@ const Hero = () => {
       cta: isFrench ? "Découvrir les Lampes" : "Shop Salt Lamps",
       link: "/category/type/home-wellness",
       bgGradient: "from-orange-950 via-amber-950/90 to-gray-950",
-      bgImage: "/images/Glowing Himalayan Salt Bowl Sanctuary.jpg"
+      bgImage: "/images/Glowing Himalayan Salt Bowl Sanctuary.png"
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ const Hero = () => {
       cta: isFrench ? "Découvrir les Huiles" : "Shop Essential Oils",
       link: "/category/type/oils",
       bgGradient: "from-green-950 via-emerald-950/90 to-gray-950",
-      bgImage: "/images/Huile essentielle Bio d’Eucalyptus Billboard.jpg"
+      bgImage: "/images/Huile essentielle Bio d’Eucalyptus Billboard.png"
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const Hero = () => {
       cta: isFrench ? "Découvrir le Sel Rose" : "Shop Pink Salt",
       link: "/category/type/home-wellness",
       bgGradient: "from-rose-950 via-amber-950/90 to-gray-950",
-      bgImage: "/images/Premium Himalayan Pink Salt.jpg"
+      bgImage: "/images/Premium Himalayan Pink Salt.png"
     },
     {
       id: 4,
@@ -68,7 +68,7 @@ const Hero = () => {
       cta: isFrench ? "Découvrir la Lavande" : "Shop Lavender Oil",
       link: "/category/type/oils",
       bgGradient: "from-violet-950 via-purple-950/90 to-gray-950",
-      bgImage: "/images/Huile essentielle Bio de Lavande.jpg"
+      bgImage: "/images/Huile essentielle Bio de Lavande.webp"
     },
     {
       id: 6,
@@ -80,11 +80,10 @@ const Hero = () => {
       cta: isFrench ? "Découvrir le Shilajit" : "Shop Shilajit",
       link: "/category/type/superfoods",
       bgGradient: "from-gray-950 via-amber-950/90 to-black",
-      bgImage: "/images/Pure Himalayan Shilajit 2.jpg"
+      bgImage: "/images/Pure Himalayan Shilajit 2.webp"
     }
   ];
 
-  // Auto-rotate every 6 seconds
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -96,7 +95,7 @@ const Hero = () => {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative w-full bg-gray-950 text-white overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
+    <section className="relative w-full bg-gray-950 text-white overflow-hidden min-h-[580px] sm:min-h-[640px] flex items-center">
       
       {/* Slide Background Container */}
       <AnimatePresence mode="wait">
@@ -108,28 +107,32 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className={`absolute inset-0 z-0 bg-gradient-to-r ${slides[currentSlide].bgGradient}`}
         >
-          {/* Blurred Atmospheric Background Layer */}
+          {/* Subtle Ambient Glow */}
           <img 
             src={slides[currentSlide].bgImage} 
             alt="" 
-            className="w-full h-full object-cover opacity-20 blur-xl scale-110"
+            className="w-full h-full object-cover opacity-15 blur-2xl scale-110"
           />
 
-          {/* Sharp Product Image Positioned Perfectly on the Right side */}
-          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 flex items-center justify-center p-6 md:p-12 z-0">
+          {/* Expanded Product Display Area */}
+          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-7/12 flex items-center justify-center p-4 md:p-8 z-0">
             <img 
               src={slides[currentSlide].bgImage} 
               alt={slides[currentSlide].title} 
-              className="max-h-[80%] max-w-[85%] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] rounded-2xl"
+              className="max-h-[92%] max-w-[95%] object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)] rounded-2xl"
+              onError={(e) => {
+                // Fallback: If image fails to load due to path/case issue
+                console.warn(`Failed to load image: ${slides[currentSlide].bgImage}`);
+              }}
             />
           </div>
 
-          {/* Dark Gradient Shield for Left-Side Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent z-10" />
+          {/* Gradient Text Contrast Mask */}
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/85 to-transparent z-10" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Slide Text Content Overlay */}
+      {/* Slide Text Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12">
         <div className="max-w-xl">
           <AnimatePresence mode="wait">
@@ -140,23 +143,19 @@ const Hero = () => {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.4 }}
             >
-              {/* Tag */}
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/30 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
                 <Leaf size={14} />
                 <span>{slides[currentSlide].tag}</span>
               </span>
 
-              {/* Title */}
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
                 {slides[currentSlide].title}
               </h1>
 
-              {/* Subtitle */}
               <p className="text-sm sm:text-base text-gray-300 mb-8 leading-relaxed font-normal">
                 {slides[currentSlide].subtitle}
               </p>
 
-              {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   to={slides[currentSlide].link}
@@ -178,7 +177,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Manual Slide Navigation Arrows */}
+      {/* Manual Navigation Arrows */}
       <button 
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-black/40 text-white/80 hover:text-white hover:bg-black/70 transition-all backdrop-blur-md cursor-pointer"
@@ -195,7 +194,7 @@ const Hero = () => {
         <ChevronRight size={22} />
       </button>
 
-      {/* Slide Indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {slides.map((_, idx) => (
           <button
