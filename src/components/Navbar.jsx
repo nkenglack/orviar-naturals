@@ -104,7 +104,7 @@ const Navbar = () => {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className="flex items-center gap-1 text-gray-700 hover:text-brand-green font-medium text-sm py-2 uppercase transition-colors">
-                <span>{isFrench ? 'PAR BÉNÉFICE' : 'HEALTH BENEFITS'}</span>
+                <span>{isFrench ? 'PAR BIENFAITS' : 'HEALTH BENEFITS'}</span>
                 <ChevronDown size={16} />
               </button>
 
@@ -207,7 +207,7 @@ const Navbar = () => {
           </div>
 
           <div>
-            <span className="block text-xs font-extrabold text-brand-green uppercase mb-2">{isFrench ? 'PAR BÉNÉFICE' : 'HEALTH BENEFITS'}</span>
+            <span className="block text-xs font-extrabold text-brand-green uppercase mb-2">{isFrench ? 'PAR BIENFAITS' : 'HEALTH BENEFITS'}</span>
             <div className="pl-3 space-y-2 border-l-2 border-green-100">
               {healthBenefitPillars.map(p => (
                 <Link
