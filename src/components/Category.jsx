@@ -33,7 +33,7 @@ const Category = () => {
         'hormonal-wellness': { en: 'Hormonal & Sexual Wellness', fr: 'Équilibre Hormonal et Libido' }
       };
       const b = benefitTitles[benefit];
-      return b ? (isFrench ? b.fr : b.en) : (isFrench ? 'Bénéfices Santé' : 'Health Benefits');
+      return b ? (isFrench ? b.fr : b.en) : (isFrench ? 'Bienfaits Santé' : 'Health Benefits');
     }
 
     if (type) {
@@ -173,7 +173,7 @@ const Category = () => {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
             type="text" 
-            placeholder={isFrench ? "Rechercher un produit ou un bénéfice..." : "Search products or health benefit..."}
+            placeholder={isFrench ? "Rechercher un produit ou un bienfait..." : "Search products or health benefit..."}
             value={searchQuery}
             onChange={handleSearchChange}
             className="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
