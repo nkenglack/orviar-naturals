@@ -12,14 +12,43 @@ const Category = () => {
   const { i18n } = useTranslation();
 
   const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
-
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
 
   useEffect(() => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
-  // Header Title Logic
+  // Dynamic Banner Image Selection
+  const getBannerImage = () => {
+    if (type) {
+      const typeBanners = {
+        'supplements': '/images/banners/supplements.jpg',
+        'superfoods': '/images/banners/superfoods.png',
+        'teas': '/images/banners/teas.jpg',
+        'oils': '/images/banners/oils.png',
+        'beauty': '/images/banners/beauty.jpg',
+        'home-wellness': '/images/banners/home-wellness.jpg'
+      };
+      return typeBanners[type] || '/images/banners/default.jpg';
+    }
+
+    if (benefit) {
+      const benefitBanners = {
+        'digestion': '/images/banners/digestion.jpg',
+        'hair-nails': '/images/banners/hair-nails.jpg',
+        'skin-antiaging': '/images/banners/skin-antiaging.jpg',
+        'weight-metabolism': '/images/banners/weight-metabolism.jpg',
+        'immunity-vitality': '/images/banners/immunity-vitality.jpg',
+        'stress-sleep': '/images/banners/stress-sleep.jpg',
+        'joints-inflammation': '/images/banners/joints-inflammation.jpg',
+        'hormonal-wellness': '/images/banners/hormonal-wellness.jpg'
+      };
+      return benefitBanners[benefit] || '/images/banners/default.jpg';
+    }
+
+    return '/images/banners/all-products.jpg';
+  };
+
   const getHeaderInfo = () => {
     if (benefit) {
       const benefitTitles = {
@@ -53,18 +82,16 @@ const Category = () => {
   };
 
   const title = getHeaderInfo();
+  const bannerImage = getBannerImage();
 
   // Universal Filtering Engine
   const filteredProducts = catalog.filter(product => {
-    
-    // 1. If path is /category/all or /category/all-products, pass ALL products
     if (name === 'all' || name === 'all-products' || (!name && !type && !benefit)) {
-      // Pass through to search filter
+      // Pass all
     } else if (name) {
       if (product.category !== name) return false;
     }
 
-    // 2. Sub-category type filter
     if (type) {
       const pt = (product.product_type || '').toLowerCase();
       const ptFr = (product.product_type_fr || '').toLowerCase();
@@ -91,7 +118,6 @@ const Category = () => {
       }
     }
 
-    // 3. Health Benefit Pillar filter
     if (benefit) {
       const benefitKeywords = {
         'digestion': ['digestion', 'gut', 'colon', 'bloating', 'transit', 'digestive', 'satiety', 'gas', 'laxative', 'estomac', 'intestin'],
@@ -115,7 +141,6 @@ const Category = () => {
       if (!matchesBenefit) return false;
     }
 
-    // 4. On-page Search query filter
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       const titleMatch = (isFrench ? (product.title_fr || product.title) : product.title).toLowerCase().includes(q);
@@ -145,35 +170,51 @@ const Category = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
       
-      {/* Category Banner */}
-      <div className="bg-brand-green py-16 text-center px-4 mb-12">
+      {/* Full-Width Image Banner with Gradient Overlay */}
+      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-900 flex items-center justify-center overflow-hidden mb-12 shadow-md">
+        
+        {/* Responsive Background Image */}
+        <img 
+          src={bannerImage} 
+          alt={title} 
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          onError={(e) => {
+            // Fallback to rich green background if image is missing
+            e.target.style.display = 'none';
+          }}
+        />
+
+        {/* Dark Gradient Overlay for Readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/60 to-black/40" />
+
+        {/* Banner Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mx-auto"
+          className="relative z-10 max-w-3xl mx-auto text-center px-4"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight capitalize">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight uppercase">
             {title}
           </h1>
-          <p className="text-lg text-green-100 mb-8">
+          <p className="text-sm md:text-lg text-gray-200 mb-6 font-medium">
             {isFrench 
               ? 'Découvrez nos formulations botaniques 100% naturelles vérifiées par la science.'
               : 'Explore our 100% natural, science-backed botanical formulations.'}
           </p>
-          <Link to="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium transition-colors">
-            <ArrowLeft size={18} /> {isFrench ? 'Retour à l\'Accueil' : 'Back to Home'}
+          <Link to="/" className="inline-flex items-center gap-2 text-white/90 hover:text-white font-semibold text-xs md:text-sm uppercase tracking-wider transition-colors">
+            <ArrowLeft size={16} /> {isFrench ? 'Retour à l\'Accueil' : 'Back to Home'}
           </Link>
         </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* On-page Search Input */}
+        {/* On-page Search Bar */}
         <div className="max-w-md mx-auto mb-10 relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
             type="text" 
-            placeholder={isFrench ? "Rechercher un produit ou un bienfait..." : "Search products or health benefit..."}
+            placeholder={isFrench ? "Rechercher un produit ou un bénéfice..." : "Search products or health benefit..."}
             value={searchQuery}
             onChange={handleSearchChange}
             className="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
@@ -188,7 +229,7 @@ const Category = () => {
           )}
         </div>
 
-        {/* Total Count Indicator */}
+        {/* Counter Badge */}
         <div className="mb-6 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">
           {isFrench ? `${filteredProducts.length} produits affichés` : `Showing ${filteredProducts.length} products`}
         </div>
@@ -272,7 +313,7 @@ const Category = () => {
         )}
       </div>
 
-      {/* Detail Modal */}
+      {/* Product Detail Modal */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
