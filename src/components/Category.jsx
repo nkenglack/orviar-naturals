@@ -59,9 +59,8 @@ const Category = () => {
     
     // 1. If path is /category/all or /category/all-products, pass ALL products
     if (name === 'all' || name === 'all-products' || (!name && !type && !benefit)) {
-      // Continue to search filter
+      // Pass through to search filter
     } else if (name) {
-      // Legacy single category match fallback
       if (product.category !== name) return false;
     }
 
@@ -189,7 +188,7 @@ const Category = () => {
           )}
         </div>
 
-        {/* Total Count Badge */}
+        {/* Total Count Indicator */}
         <div className="mb-6 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">
           {isFrench ? `${filteredProducts.length} produits affichés` : `Showing ${filteredProducts.length} products`}
         </div>
@@ -273,7 +272,7 @@ const Category = () => {
         )}
       </div>
 
-      {/* Product Modal */}
+      {/* Detail Modal */}
       <AnimatePresence>
         {selectedProduct && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
