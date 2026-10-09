@@ -12,7 +12,11 @@ export const products = [
     "description_fr": "Biotine hautement dosée pour renforcer les ongles, favoriser la croissance des cheveux et soutenir la vitalité cellulaire.",
     "benefits": ["Hair Growth", "Nail Strength", "Skin Health", "Energy Metabolism"],
     "benefits_fr": ["Croissance des cheveux", "Renforcement des ongles", "Santé de la peau", "Métabolisme énergétique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-biotine.jpg",
+    "images": [
+      "/images/products/orviar-biotine.jpg",
+      "/images/products/orviar-biotine-2.jpg"
+    ]
   },
   {
     "id": "graine-de-chia-bio-perte-du-poids-ventre-plat",
@@ -27,7 +31,11 @@ export const products = [
     "description_fr": "Graines de chia biologiques riches en fibres et oméga-3 pour soutenir la digestion, l’énergie et l’équilibre du poids.",
     "benefits": ["Digestion", "Weight Management", "Heart Health", "Omega-3 Support"],
     "benefits_fr": ["Digestion", "Gestion du poids", "Santé du cœur", "Apport en oméga-3"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-chia-seeds.webp",
+    "images": [
+      "/images/products/organic-chia-seeds.webp",
+      "/images/products/organic-chia-seeds-2.webp"
+    ]
   },
   {
     "id": "flax-seeds",
@@ -42,7 +50,12 @@ export const products = [
     "description_fr": "Graines de lin riches en fibres et oméga-3 pour soutenir la digestion, l’équilibre hormonal et la santé du cœur.",
     "benefits": ["Digestion", "Hormonal Balance", "Heart Health", "Glycemia Support"],
     "benefits_fr": ["Digestion", "Équilibre hormonal", "Santé cardiovasculaire", "Stabilité glycémique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-flax-seeds.webp",
+    "images": [
+      "/images/products/organic-flax-seeds.webp",
+      "/images/products/organic-flax-seeds-2.webp",
+      "/images/products/organic-flax-seeds-3.jpg"
+    ]
   },
   {
     "id": "poudre-indienne-bhringraj-naturelle-contre-la-chute-des-cheveux-250gr",
@@ -57,7 +70,12 @@ export const products = [
     "description_fr": "Poudre traditionnelle pour renforcer les racines, réduire la chute et stimuler la croissance naturelle des cheveux.",
     "benefits": ["Hair Growth", "Hair Fall Reduction", "Scalp Nourishment", "Shine Enhancement"],
     "benefits_fr": ["Croissance capillaire", "Réduction de la chute", "Nutrition du cuir chevelu", "Amélioration de la brillance"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-bhringraj-powder.webp",
+    "images": [
+      "/images/products/orviar-bhringraj-powder.webp",
+      "/images/products/orviar-bhringraj-powder-2.webp",
+      "/images/products/orviar-bhringraj-powder-3.webp"
+    ]
   },
   {
     "id": "aloe-vera-bio-en-poudre-250-gr",
@@ -72,7 +90,12 @@ export const products = [
     "description_fr": "Aloe vera biologique pour soutenir la digestion, l’hydratation de la peau et la détox naturelle.",
     "benefits": ["Digestion", "Skin Hydration", "Detoxification", "Anti-Inflammatory Support"],
     "benefits_fr": ["Digestion", "Hydratation de la peau", "Détoxification", "Apaisement inflammatoire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-aloe-vera-powder.webp",
+    "images": [
+      "/images/products/organic-aloe-vera-powder.webp",
+      "/images/products/organic-aloe-vera-powder-2.webp",
+      "/images/products/organic-aloe-vera-powder-3.webp"
+    ]
   },
   {
     "id": "poudre-de-moringa-bio-moringa-powder-250g",
@@ -87,7 +110,11 @@ export const products = [
     "description_fr": "Poudre de moringa riche en nutriments pour soutenir l’énergie, l’immunité et l’équilibre glycémique.",
     "benefits": ["Energy", "Immune Support", "Glycemia Balance", "Anti-Inflammatory Support"],
     "benefits_fr": ["Énergie", "Soutien immunitaire", "Équilibre glycémique", "Équilibre inflammatoire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-moringa-powder.jpg",
+    "images": [
+      "/images/products/orviar-moringa-powder.jpg",
+      "/images/products/orviar-moringa-powder-2.jpg"
+    ]
   },
   {
     "id": "graines-de-quinoa-bio-250-gr",
@@ -102,7 +129,7 @@ export const products = [
     "description_fr": "Quinoa biologique riche en protéines et minéraux pour soutenir l’énergie et la digestion.",
     "benefits": ["Energy", "Digestion", "Metabolic Balance", "Protein Support"],
     "benefits_fr": ["Énergie", "Digestion", "Équilibre métabolique", "Apport protéique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/quinoa.jpg"
   },
   {
     "id": "bitter-melon-kerela-organic-dosage-900-mg-prevention-et-traitement-du-diabete",
@@ -117,7 +144,7 @@ export const products = [
     "description_fr": "Gélules de bitter melon pour soutenir l’équilibre glycémique et le métabolisme.",
     "benefits": ["Glycemia Balance", "Metabolic Health", "Detoxification", "Digestion"],
     "benefits_fr": ["Équilibre glycémique", "Santé métabolique", "Détoxification", "Digestion"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-bitter-melon.webp"
   },
   {
     "id": "curcuma-bio-organic-turmeric-dosage-900-mg",
@@ -132,7 +159,11 @@ export const products = [
     "description_fr": "Gélules de curcuma pour soutenir les articulations, l’équilibre inflammatoire et l’immunité.",
     "benefits": ["Joint Comfort", "Inflammation Balance", "Antioxidant Support", "Immune Support"],
     "benefits_fr": ["Confort articulaire", "Équilibre inflammatoire", "Soutien antioxydant", "Soutien immunitaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/curcumedix-supplement.webp",
+    "images": [
+      "/images/products/curcumedix-supplement.webp",
+      "/images/products/curcumedix-supplement-2.webp"
+    ]
   },
   {
     "id": "fenugrec-bio-dosage-900-mg-90-gelules",
@@ -147,7 +178,7 @@ export const products = [
     "description_fr": "Gélules de fenugrec pour soutenir la digestion, l’appétit, l’équilibre hormonal et le métabolisme.",
     "benefits": ["Weight Gain Support", "Digestion", "Hormonal Balance", "Glycemia Support"],
     "benefits_fr": ["Prise de poids saine", "Digestion", "Équilibre hormonal", "Stabilité glycémique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/fenugreek-supplement.webp"
   },
   {
     "id": "green-superfood",
@@ -162,7 +193,12 @@ export const products = [
     "description_fr": "Mélange superfood puissant pour soutenir la détox, l’énergie et la vitalité quotidienne.",
     "benefits": ["Detoxification", "Energy", "Immune Support", "Antioxidant Protection"],
     "benefits_fr": ["Détoxification", "Énergie", "Soutien immunitaire", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/green-superfood-supplement.webp",
+    "images": [
+      "/images/products/green-superfood-supplement.webp",
+      "/images/products/green-superfood-supplement-2.webp",
+      "/images/products/green-superfood-supplement-3.webp"
+    ]
   },
   {
     "id": "spiruline-tres-fort-dosage-900-mg-renforce-les-defenses-naturelles",
@@ -177,7 +213,7 @@ export const products = [
     "description_fr": "Spiruline hautement dosée pour soutenir l’immunité, la détox et l’énergie naturelle.",
     "benefits": ["Immune Support", "Detoxification", "Energy", "Metabolic Balance"],
     "benefits_fr": ["Soutien immunitaire", "Détoxification", "Énergie", "Équilibre métabolique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/spirulina-supplement.webp"
   },
   {
     "id": "orviar-neuro-plus-brain-focus-formula-nootropic-supplement-60-capsules",
@@ -192,7 +228,7 @@ export const products = [
     "description_fr": "Formule naturelle nootropique pour soutenir la concentration, la mémoire et la clarté mentale.",
     "benefits": ["Focus", "Memory", "Cognitive Clarity", "Nerve Support"],
     "benefits_fr": ["Concentration", "Mémoire", "Clarté mentale", "Soutien nerveux"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/neuro-health-Supplement.webp"
   },
   {
     "id": "infusion-lashwagandha-bio-lutte-contre-la-fatigue-chronique",
@@ -207,7 +243,12 @@ export const products = [
     "description_fr": "Infusion apaisante d’ashwagandha pour soutenir l’équilibre du stress et l’énergie.",
     "benefits": ["Stress Balance", "Energy", "Emotional Well-Being", "Anti-Fatigue Support"],
     "benefits_fr": ["Équilibre du stress", "Énergie", "Bien-être émotionnel", "Soutien anti-fatigue"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/ashwagandha-powder.webp",
+    "images": [
+      "/images/products/ashwagandha-powder.webp",
+      "/images/products/ashwagandha-powder-2.webp",
+      "/images/products/ashwagandha-powder-3.jpg"
+    ]
   },
   {
     "id": "poudre-de-cannelle-spirituelle-100gr",
@@ -222,7 +263,7 @@ export const products = [
     "description_fr": "Cannelle traditionnelle du Sri Lanka pour soutenir la digestion, l’énergie et l’équilibre glycémique.",
     "benefits": ["Digestion", "Glycemia Balance", "Energy", "Antioxidant Support"],
     "benefits_fr": ["Digestion", "Équilibre glycémique", "Énergie", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/spiritual-cinnamon.webp"
   },
   {
     "id": "orviar-fennel-cut-sifted",
@@ -237,7 +278,12 @@ export const products = [
     "description_fr": "Infusion douce de fenouil pour soutenir la digestion et réduire les ballonnements.",
     "benefits": ["Digestion", "Bloating Relief", "Gut Comfort", "Detoxification"],
     "benefits_fr": ["Digestion", "Réduction des ballonnements", "Confort intestinal", "Détoxification"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-fennel.webp",
+    "images": [
+      "/images/products/organic-fennel.webp",
+      "/images/products/organic-fennel-2.webp",
+      "/images/products/organic-fennel-3.webp"
+    ]
   },
   {
     "id": "graine-fenugrec-infusion-the-100g-ameliore-la-digestion-eliminent-les-toxines",
@@ -252,7 +298,12 @@ export const products = [
     "description_fr": "Infusion détoxifiante de fenugrec pour soutenir la digestion et l’élimination des toxines.",
     "benefits": ["Digestion", "Detoxification", "Metabolic Balance", "Anti-Inflammatory Support"],
     "benefits_fr": ["Digestion", "Détoxification", "Équilibre métabolique", "Soutien anti-inflammatoire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-fenugreek.webp",
+    "images": [
+      "/images/products/organic-fenugreek.webp",
+      "/images/products/organic-fenugreek-2.webp",
+      "/images/products/organic-fenugreek-3.webp"
+    ]
   },
   {
     "id": "the-de-moringa-moring-feuilles-moringa-oleifera-bio-100gr",
@@ -267,7 +318,7 @@ export const products = [
     "description_fr": "Infusion de moringa riche en nutriments pour soutenir l’énergie, l’immunité et la glycémie.",
     "benefits": ["Energy", "Immune Support", "Glycemia Balance", "Antioxidant Protection"],
     "benefits_fr": ["Énergie", "Soutien immunitaire", "Équilibre glycémique", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/moringa-leaves-tea.webp"
   },
   {
     "id": "orviar-turmeric-root",
@@ -282,7 +333,11 @@ export const products = [
     "description_fr": "Infusion de racine de curcuma pour soutenir les articulations, l’équilibre inflammatoire et la détox.",
     "benefits": ["Joint Comfort", "Inflammation Balance", "Detoxification", "Immune Support"],
     "benefits_fr": ["Confort articulaire", "Équilibre inflammatoire", "Détoxification", "Soutien immunitaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/curcuma-infusion.jpg",
+    "images": [
+      "/images/products/curcuma-infusion.jpg",
+      "/images/products/curcuma-infusion-2.webp"
+    ]
   },
   {
     "id": "poudre-indienne-bio-indigo-coloration-naturelle-des-cheveux",
@@ -297,7 +352,12 @@ export const products = [
     "description_fr": "Poudre d’indigo naturelle pour une coloration foncée, un cuir chevelu sain et des cheveux renforcés.",
     "benefits": ["Natural Hair Coloring", "Scalp Health", "Hair Strengthening", "Shine Enhancement"],
     "benefits_fr": ["Coloration naturelle", "Santé du cuir chevelu", "Renforcement capillaire", "Amélioration de la brillance"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/nila-powder.webp",
+    "images": [
+      "/images/products/nila-powder.webp",
+      "/images/products/nila-powder-2.jpg",
+      "/images/products/nila-powder-3.jpg"
+    ]
   },
   {
     "id": "spiruline-en-poudre-250-gr",
@@ -312,7 +372,7 @@ export const products = [
     "description_fr": "Poudre de spiruline riche en nutriments pour soutenir l’immunité, la détox et l’énergie.",
     "benefits": ["Immune Support", "Detoxification", "Energy", "Antioxidant Protection"],
     "benefits_fr": ["Soutien immunitaire", "Détoxification", "Énergie", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/spiruline-powder.jpg"
   },
   {
     "id": "poudre-reetha-aritha-bio-lutte-contre-les-pellicules-et-nourrit-les-cheveux-250-gr",
@@ -327,7 +387,11 @@ export const products = [
     "description_fr": "Poudre de reetha pour un nettoyage doux, une réduction des pellicules et un cuir chevelu nourri.",
     "benefits": ["Gentle Cleansing", "Dandruff Reduction", "Scalp Nourishment", "Hair Softening"],
     "benefits_fr": ["Nettoyage doux", "Réduction des pellicules", "Nutrition du cuir chevelu", "Assouplissement des cheveux"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-reetha-powder.jpg",
+    "images": [
+      "/images/products/organic-reetha-powder.jpg",
+      "/images/products/organic-reetha-powder-2.webp"
+    ]
   },
   {
     "id": "fleurs-dhibiscus-en-poudre-bio-250-gr",
@@ -342,7 +406,12 @@ export const products = [
     "description_fr": "Poudre d’hibiscus pour la brillance des cheveux, la santé du cuir chevelu et la protection antioxydante.",
     "benefits": ["Hair Shine", "Root Strengthening", "Scalp Balance", "Antioxidant Support"],
     "benefits_fr": ["Brillance capillaire", "Renforcement des racines", "Équilibre du cuir chevelu", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-rose-petals-powder.webp",
+    "images": [
+      "/images/products/orviar-rose-petals-powder.webp",
+      "/images/products/orviar-rose-petals-powder-2.jpg",
+      "/images/products/orviar-rose-petals-powder-3.webp"
+    ]
   },
   {
     "id": "poudre-de-feuille-de-neem-ayurvedique-250gr",
@@ -357,7 +426,7 @@ export const products = [
     "description_fr": "Poudre de neem pour purifier la peau, équilibrer le cuir chevelu et soutenir la détox naturelle.",
     "benefits": ["Skin Purification", "Scalp Balance", "Detoxification", "Antibacterial Support"],
     "benefits_fr": ["Purification de la peau", "Équilibre du cuir chevelu", "Détoxification", "Soutien antibactérien"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-neem-powder.webp"
   },
   {
     "id": "curcuma-bio-en-poudre-organic-turmeric-aromatica",
@@ -372,7 +441,12 @@ export const products = [
     "description_fr": "Poudre de curcuma premium pour soutenir les articulations, l’équilibre inflammatoire et la protection antioxydante.",
     "benefits": ["Joint Comfort", "Inflammation Balance", "Antioxidant Protection", "Immune Support"],
     "benefits_fr": ["Confort articulaire", "Équilibre inflammatoire", "Protection antioxydante", "Soutien immunitaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-curcuma-powder.webp",
+    "images": [
+      "/images/products/organic-curcuma-powder.webp",
+      "/images/products/organic-curcuma-powder-2.webp",
+      "/images/products/organic-curcuma-powder-3.webp"
+    ]
   },
   {
     "id": "poudre-de-petales-de-rose-250gr",
@@ -387,7 +461,12 @@ export const products = [
     "description_fr": "Poudre de pétales de rose pour illuminer la peau, apaiser et tonifier naturellement.",
     "benefits": ["Skin Radiance", "Soothing Care", "Natural Toning", "Complexion Balance"],
     "benefits_fr": ["Éclat de la peau", "Soin apaisant", "Tonification naturelle", "Équilibre du teint"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-rose-petals-powder.webp",
+    "images": [
+      "/images/products/orviar-rose-petals-powder.webp",
+      "/images/products/orviar-rose-petals-powder-2.jpg",
+      "/images/products/orviar-rose-petals-powder-3.webp"
+    ]
   },
   {
     "id": "lampe-de-sel-d-himalaya-lutter-contre-les-allergies-lasthme-et-la-toux-nocturne",
@@ -402,7 +481,7 @@ export const products = [
     "description_fr": "Lampe de sel d’Himalaya pour purifier l’air, favoriser la relaxation et créer une ambiance apaisante.",
     "benefits": ["Air Purification", "Relaxation", "Allergen Reduction", "Ambient Wellness"],
     "benefits_fr": ["Purification de l’air", "Relaxation", "Réduction des allergènes", "Bien-être ambiant"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-pink-salt-lamp-leaf.jpg"
   },
   {
     "id": "lampe-de-sel-d-himalayan-aide-a-eliminer-les-moisissures-les-allergenes-et-les-bacteries",
@@ -417,7 +496,7 @@ export const products = [
     "description_fr": "Lampe de sel en forme de globe pour purifier l’air et favoriser une ambiance équilibrée.",
     "benefits": ["Air Freshness", "Relaxation", "Allergen Reduction", "Emotional Balance"],
     "benefits_fr": ["Fraîcheur de l’air", "Relaxation", "Réduction des allergènes", "Équilibre émotionnel"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-pink-salt lamp-globe.jpg"
   },
   {
     "id": "lampe-rose-de-sel-d-himalaya-natural",
@@ -432,7 +511,7 @@ export const products = [
     "description_fr": "Lampe de sel naturelle pour purifier l’air et favoriser le calme émotionnel.",
     "benefits": ["Air Purification", "Relaxation", "Stress Relief", "Ambient Balance"],
     "benefits_fr": ["Purification de l’air", "Relaxation", "Soulagement du stress", "Équilibre ambiant"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-lamp-natural.jpg"
   },
   {
     "id": "sene-entieres-tisane-detox-puissant-purgatif-laxatif-naturel",
@@ -447,7 +526,7 @@ export const products = [
     "description_fr": "Infusion de séné pour une détox naturelle et un effet purgatif puissant.",
     "benefits": ["Colon Cleansing", "Detoxification", "Bloating Relief", "Digestive Support"],
     "benefits_fr": ["Nettoyage du côlon", "Détoxification", "Réduction des ballonnements", "Soutien digestif"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/senna-cut-sifted.webp"
   },
   {
     "id": "mucuna-pruriens-bio-meilleure-solution-pour-la-faiblesse-sexuelle",
@@ -462,7 +541,7 @@ export const products = [
     "description_fr": "Infusion de mucuna pour la vitalité, l’équilibre émotionnel et le soutien nerveux.",
     "benefits": ["Mood Balance", "Nerve Support", "Energy", "Vitality Enhancement"],
     "benefits_fr": ["Équilibre émotionnel", "Soutien nerveux", "Énergie", "Amélioration de la vitalité"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-mucuna-seeds.jpg"
   },
   {
     "id": "chlorelle-pure-500-mg",
@@ -477,7 +556,11 @@ export const products = [
     "description_fr": "Chlorelle pure pour la détox, l’immunité et la vitalité cellulaire.",
     "benefits": ["Detoxification", "Immune Strength", "Cellular Repair", "Energy Support"],
     "benefits_fr": ["Détoxification", "Renforcement immunitaire", "Réparation cellulaire", "Soutien énergétique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/chlorella-pure-supplement.webp",
+    "images": [
+      "/images/products/chlorella-pure-supplement.webp",
+      "/images/products/chlorella-pure-supplement-2.webp"
+    ]
   },
   {
     "id": "formule-prostate-entretient-et-protege-la-sante-de-votre-prostate",
@@ -492,7 +575,11 @@ export const products = [
     "description_fr": "Formule naturelle pour soutenir la prostate et le confort urinaire.",
     "benefits": ["Urinary Comfort", "Inflammation Reduction", "Prostate Protection", "Men’s Vitality"],
     "benefits_fr": ["Confort urinaire", "Réduction de l’inflammation", "Protection de la prostate", "Vitalité masculine"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/formule-prostate-supplement.webp",
+    "images": [
+      "/images/products/formule-prostate-supplement.webp",
+      "/images/products/formule-prostate-supplement-2.webp"
+    ]
   },
   {
     "id": "sel-rose-de-lhimalaya-au-cameroun-himalayan-salt",
@@ -507,7 +594,7 @@ export const products = [
     "description_fr": "Sel rose de l’Himalaya riche en minéraux pour l’équilibre et la détox.",
     "benefits": ["Mineral Balance", "Hydration Support", "Detoxification", "Electrolyte Support"],
     "benefits_fr": ["Équilibre minéral", "Soutien hydratation", "Détoxification", "Soutien électrolytique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-pink-salt-2.27kg.jpg"
   },
   {
     "id": "infusion-feuilles-sechees-de-tulsi-bio-100g",
@@ -522,7 +609,12 @@ export const products = [
     "description_fr": "Infusion de tulsi pour le stress, l’immunité et le confort respiratoire.",
     "benefits": ["Stress Reduction", "Immune Support", "Respiratory Comfort", "Emotional Balance"],
     "benefits_fr": ["Réduction du stress", "Renforcement immunitaire", "Confort respiratoire", "Équilibre émotionnel"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-tulsi-basilic.webp",
+    "images": [
+      "/images/products/organic-tulsi-basilic.webp",
+      "/images/products/organic-tulsi-basilic-2.jpg",
+      "/images/products/organic-tulsi-basilic-3.webp"
+    ]
   },
   {
     "id": "infusion-de-racine-la-reglisse-bio-licorice-root-organic-lutte-contre-les-infections-virales-et-le-cancer",
@@ -537,7 +629,7 @@ export const products = [
     "description_fr": "Infusion de réglisse pour apaiser la gorge, soutenir la digestion et l’immunité.",
     "benefits": ["Throat Soothing", "Immune Support", "Anti-Inflammatory Benefits", "Digestive Comfort"],
     "benefits_fr": ["Apaisement de la gorge", "Soutien immunitaire", "Bienfaits anti-inflammatoires", "Confort digestif"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-licorice-root-tea.jpg"
   },
   {
     "id": "huile-essentielle-dylang-ylang-bio-100-ml",
@@ -552,7 +644,7 @@ export const products = [
     "description_fr": "Huile d’ylang-ylang pour la relaxation, l’équilibre émotionnel et le soin de la peau.",
     "benefits": ["Relaxation", "Skin Balance", "Emotional Harmony", "Aromatherapy Support"],
     "benefits_fr": ["Relaxation", "Équilibre de la peau", "Harmonie émotionnelle", "Soutien aromathérapie"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/ylang-ylang-oil.webp"
   },
   {
     "id": "huile-essentielle-darbre-a-the-bio-tea-tree-oil-100-ml",
@@ -567,7 +659,7 @@ export const products = [
     "description_fr": "Huile d’arbre à thé pour purifier la peau et soutenir l’immunité.",
     "benefits": ["Antibacterial Support", "Antifungal Support", "Skin Purification", "Immune Defense"],
     "benefits_fr": ["Soutien antibactérien", "Soutien antifongique", "Purification de la peau", "Défense immunitaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/tea-tree-essential-oil-100ml.webp"
   },
   {
     "id": "huile-essentielle-de-romarin-100ml",
@@ -582,7 +674,7 @@ export const products = [
     "description_fr": "Huile de romarin pour la croissance capillaire, la clarté mentale et le confort respiratoire.",
     "benefits": ["Hair Growth Support", "Mental Clarity", "Respiratory Comfort", "Anti-Inflammatory Support"],
     "benefits_fr": ["Soutien croissance capillaire", "Clarté mentale", "Confort respiratoire", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/rosemary-essential-oil-100ml.webp"
   },
   {
     "id": "huile-essentielle-de-lavande",
@@ -597,7 +689,7 @@ export const products = [
     "description_fr": "Huile de lavande pour la relaxation, le sommeil et le confort cutané.",
     "benefits": ["Relaxation", "Sleep Support", "Skin Comfort", "Stress Reduction"],
     "benefits_fr": ["Relaxation", "Soutien du sommeil", "Confort cutané", "Réduction du stress"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-lavander-30ml.webp"
   },
   {
     "id": "huile-essentielle-d-encens-frankinsens-100-ml",
@@ -612,7 +704,12 @@ export const products = [
     "description_fr": "Huile d’encens pour l’immunité, l’équilibre émotionnel et la régénération cutanée.",
     "benefits": ["Immune Support", "Emotional Balance", "Skin Rejuvenation", "Anti-Inflammatory Benefits"],
     "benefits_fr": ["Soutien immunitaire", "Équilibre émotionnel", "Régénération cutanée", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/frankinsens-essential-oil.webp",
+    "images": [
+      "/images/products/frankinsens-essential-oil.webp",
+      "/images/products/frankinsens-essential-oil-2.webp",
+      "/images/products/frankinsens-essential-oil-3.webp"
+    ]
   },
   {
     "id": "huile-essentielle-d-eucalyptus-100ml",
@@ -627,7 +724,11 @@ export const products = [
     "description_fr": "Huile d’eucalyptus pour le confort respiratoire et la purification.",
     "benefits": ["Respiratory Comfort", "Airway Opening", "Purification", "Mental Clarity"],
     "benefits_fr": ["Confort respiratoire", "Dégagement des voies aériennes", "Purification", "Clarté mentale"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-eucalyptus-essential oil.webp",
+    "images": [
+      "/images/products/organic-eucalyptus-essential oil.webp",
+      "/images/products/organic-eucalyptus-essential-oil-2.webp"
+    ]
   },
   {
     "id": "sel-de-mer-rose-de-lhimalayan-gros-grain-prenez-les-bains-therapeutiques-au-sel-d-himalaya",
@@ -642,7 +743,11 @@ export const products = [
     "description_fr": "Sel rose gros grain pour les bains thérapeutiques et la détox.",
     "benefits": ["Mineral Balance", "Detoxification", "Relaxation", "Hydration Support"],
     "benefits_fr": ["Équilibre minéral", "Détoxification", "Relaxation", "Soutien hydratation"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-pink-salt-coarse.webp",
+    "images": [
+      "/images/products/himalayan-pink-salt-coarse.webp",
+      "/images/products/himalayan-pink-salt-coarse-2.webp"
+    ]
   },
   {
     "id": "huile-dargan-100-ml",
@@ -657,7 +762,12 @@ export const products = [
     "description_fr": "Huile d’argan pour la réparation cutanée, l’hydratation et les soins anti-acné.",
     "benefits": ["Skin Repair", "Hydration", "Anti-Acne Support", "Hair Nourishment"],
     "benefits_fr": ["Réparation cutanée", "Hydratation", "Soutien anti-acné", "Nourrit les cheveux"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/argan-oil.webp",
+    "images": [
+      "/images/products/argan-oil.webp",
+      "/images/products/argan-oil-2.webp",
+      "/images/products/argan-oil-3.webp"
+    ]
   },
   {
     "id": "huile-damande-douce-100-ml",
@@ -672,7 +782,7 @@ export const products = [
     "description_fr": "Huile d’amande douce pour la douceur, l’hydratation et les peaux sensibles.",
     "benefits": ["Skin Softening", "Hydration", "Sensitivity Relief", "Baby-Safe Care"],
     "benefits_fr": ["Douceur de la peau", "Hydratation", "Soulagement des peaux sensibles", "Soin adapté aux bébés"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/sweet-almond-oil-1000ml.webp"
   },
   {
     "id": "sel-de-lhimalaya-en-pierre-traite-les-problemes-de-dartre-eczema-peaux-seche-et-deshydratees",
@@ -687,7 +797,7 @@ export const products = [
     "description_fr": "Barre exfoliante au sel pour purifier et hydrater la peau.",
     "benefits": ["Skin Exfoliation", "Purification", "Hydration Balance", "Support for Dry Skin"],
     "benefits_fr": ["Exfoliation", "Purification", "Équilibre hydratation", "Soutien pour peaux sèches"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-exfoliating-bar.jpg"
   },
   {
     "id": "huile-de-bergamote-100-ml-antiseptique-regenerante-cutanee",
@@ -702,7 +812,12 @@ export const products = [
     "description_fr": "Huile de bergamote pour les soins antiseptiques et la régénération cutanée.",
     "benefits": ["Antiseptic Support", "Skin Regeneration", "Emotional Uplift", "Anti-Bacterial Benefits"],
     "benefits_fr": ["Soutien antiseptique", "Régénération cutanée", "Amélioration émotionnelle", "Bienfaits antibactériens"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/bergamote-essential-oil-100ml.webp",
+    "images": [
+      "/images/products/bergamote-essential-oil-100ml.webp",
+      "/images/products/bergamote-essential-oil-100ml-2.webp",
+      "/images/products/bergamote-essential-oil-100ml-3.webp"
+    ]
   },
   {
     "id": "huile-de-clou-de-girofle-100-ml",
@@ -717,7 +832,12 @@ export const products = [
     "description_fr": "Huile de girofle pour la défense antimicrobienne et le soulagement des douleurs.",
     "benefits": ["Antimicrobial Defense", "Oral Care", "Pain Relief", "Anti-Inflammatory Support"],
     "benefits_fr": ["Défense antimicrobienne", "Soin buccal", "Soulagement des douleurs", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-cloves-oil.webp",
+    "images": [
+      "/images/products/organic-cloves-oil.webp",
+      "/images/products/organic-cloves-oil-2.webp",
+      "/images/products/organic-cloves-oil-3.webp"
+    ]
   },
   {
     "id": "huile-de-vetiver-100-ml",
@@ -732,7 +852,7 @@ export const products = [
     "description_fr": "Huile de vétiver pour le confort articulaire, la relaxation musculaire et l’équilibre émotionnel.",
     "benefits": ["Joint Comfort", "Muscle Relief", "Emotional Grounding", "Relaxation Support"],
     "benefits_fr": ["Confort articulaire", "Relaxation musculaire", "Ancrage émotionnel", "Soutien relaxation"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-vetiver-30ml.webp"
   },
   {
     "id": "huile-de-citron-lemon-oil-100-ml",
@@ -747,7 +867,7 @@ export const products = [
     "description_fr": "Huile de citron pour purifier, énergiser et clarifier la peau.",
     "benefits": ["Purification", "Energy Boost", "Skin Brightening", "Emotional Uplift"],
     "benefits_fr": ["Purification", "Énergie", "Éclaircissement de la peau", "Amélioration émotionnelle"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-lemon-oil.jpg"
   },
   {
     "id": "huile-vegetale-de-curcuma-lutte-contre-nbsp-les-crampes-et-jambes-lourdes",
@@ -762,7 +882,12 @@ export const products = [
     "description_fr": "Huile de curcuma pour le confort musculaire et la circulation.",
     "benefits": ["Muscle Comfort", "Circulation Support", "Inflammation Reduction", "Joint Relief"],
     "benefits_fr": ["Confort musculaire", "Soutien circulation", "Réduction de l’inflammation", "Soulagement articulaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-curcuma-oil.webp",
+    "images": [
+      "/images/products/organic-curcuma-oil.webp",
+      "/images/products/organic-curcuma-oil-2.webp",
+      "/images/products/organic-curcuma-oil-3.webp"
+    ]
   },
   {
     "id": "huile-dorigan-bio-100-ml",
@@ -777,7 +902,11 @@ export const products = [
     "description_fr": "Huile d’origan pour la défense antimicrobienne et la purification cutanée.",
     "benefits": ["Antimicrobial Defense", "Immune Support", "Skin Purification", "Anti-Fungal Benefits"],
     "benefits_fr": ["Défense antimicrobienne", "Soutien immunitaire", "Purification cutanée", "Bienfaits antifongiques"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/oregano-oil.webp",
+    "images": [
+      "/images/products/oregano-oil.webp",
+      "/images/products/oregano-oil-2.webp"
+    ]
   },
   {
     "id": "huile-de-neem-bio-anti-bacterienne-anti-fongique-1-00-ml",
@@ -792,7 +921,7 @@ export const products = [
     "description_fr": "Huile de neem pour purifier la peau et équilibrer le cuir chevelu.",
     "benefits": ["Anti-Bacterial Support", "Anti-Fungal Support", "Skin Cleansing", "Scalp Balance"],
     "benefits_fr": ["Soutien antibactérien", "Soutien antifongique", "Purification de la peau", "Équilibre du cuir chevelu"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-neem-powder.webp"
   },
   {
     "id": "huile-davocat-pression-a-froid-bio-pousser-capillaire-rapide-100-ml",
@@ -807,7 +936,12 @@ export const products = [
     "description_fr": "Huile d’avocat pour la croissance capillaire, l’hydratation et la réparation.",
     "benefits": ["Hair Growth Support", "Deep Hydration", "Skin Repair", "Nutrient Enrichment"],
     "benefits_fr": ["Pousse capillaire", "Hydratation profonde", "Réparation cutanée", "Apport nutritif"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/avocado-oil.webp",
+    "images": [
+      "/images/products/avocado-oil.webp",
+      "/images/products/avocado-oil-2.webp",
+      "/images/products/avocado-oil-3.webp"
+    ]
   },
   {
     "id": "huile-de-pepin-de-raisin",
@@ -822,7 +956,12 @@ export const products = [
     "description_fr": "Huile de pépin de raisin pour nourrir le cuir chevelu et hydrater sans graisser.",
     "benefits": ["Scalp Nourishment", "Lightweight Hydration", "Dandruff Reduction", "Skin Softening"],
     "benefits_fr": ["Nourrit le cuir chevelu", "Hydratation légère", "Réduction des pellicules", "Douceur de la peau"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-grapseed-oil.webp",
+    "images": [
+      "/images/products/organic-grapseed-oil.webp",
+      "/images/products/organic-grapseed-oil-2.webp",
+      "/images/products/organic-grapseed-oil-3.webp"
+    ]
   },
   {
     "id": "huile-de-rose-musquee-100-ml",
@@ -837,7 +976,13 @@ export const products = [
     "description_fr": "Huile de rose musquée pour l’anti-âge, la réparation et l’éclat.",
     "benefits": ["Anti-Aging Support", "Skin Regeneration", "Radiance Enhancement", "Scar Reduction"],
     "benefits_fr": ["Soutien anti-âge", "Régénération cutanée", "Éclat du teint", "Réduction des cicatrices"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-rosehip-oil.webp",
+    "images": [
+      "/images/products/organic-rosehip-oil.webp",
+      "/images/products/organic-rosehip-oil-2.webp",
+      "/images/products/organic-rosehip-oil-3.webp",
+      "/images/products/organic-rosehip-oil-4.webp"
+    ]
   },
   {
     "id": "huile-de-jojoba-bio",
@@ -852,7 +997,7 @@ export const products = [
     "description_fr": "Huile de jojoba pour équilibrer le sébum et hydrater naturellement.",
     "benefits": ["Sebum Regulation", "Acne Reduction", "Hydration", "Balance for Hair & Skin"],
     "benefits_fr": ["Régulation du sébum", "Réduction de l’acné", "Hydratation", "Équilibre peau & cheveux"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/argan-oil.webp"
   },
   {
     "id": "huile-de-graines-de-lin-lutte-cotre-les",
@@ -867,7 +1012,12 @@ export const products = [
     "description_fr": "Huile de lin pour hydrater et réduire l’inflammation.",
     "benefits": ["Skin Hydration", "Inflammation Reduction", "Hair Nourishment", "Soothing Care"],
     "benefits_fr": ["Hydratation de la peau", "Réduction de l’inflammation", "Nourrit les cheveux", "Soin apaisant"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/flaxSeed-oil-100ml.webp",
+    "images": [
+      "/images/products/flaxSeed-oil-100ml.webp",
+      "/images/products/flaxSeed-oil-100ml-2.webp",
+      "/images/products/flaxSeed-oil-100ml-3.webp"
+    ]
   },
   {
     "id": "huile-de-castor-huile-de-ricin",
@@ -882,7 +1032,12 @@ export const products = [
     "description_fr": "Huile de ricin pour la pousse des cheveux, le renforcement du cuir chevelu et des cils.",
     "benefits": ["Hair Growth", "Lash & Brow Strengthening", "Scalp Health", "Deep Nourishment"],
     "benefits_fr": ["Pousse des cheveux", "Renforcement des cils & sourcils", "Santé du cuir chevelu", "Nutrition intense"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-castor-oil-100ml.webp",
+    "images": [
+      "/images/products/organic-castor-oil-100ml.webp",
+      "/images/products/organic-castor-oil-100ml-2.webp",
+      "/images/products/organic-castor-oil-100ml-3.webp"
+    ]
   },
   {
     "id": "huile-de-graine-nigelle-100-ml",
@@ -897,7 +1052,12 @@ export const products = [
     "description_fr": "Huile de nigelle pour le confort respiratoire, l’immunité et l’équilibre inflammatoire.",
     "benefits": ["Respiratory Support", "Immune Strength", "Inflammation Reduction", "Allergy Relief"],
     "benefits_fr": ["Soutien respiratoire", "Renforcement immunitaire", "Réduction de l’inflammation", "Soulagement des allergies"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-black-seed-oil.webp",
+    "images": [
+      "/images/products/organic-black-seed-oil.webp",
+      "/images/products/organic-black-seed-oil-2.webp",
+      "/images/products/organic-black-seed-oil-3.webp"
+    ]
   },
   {
     "id": "graines-de-moringa-bio-250-gr",
@@ -912,7 +1072,12 @@ export const products = [
     "description_fr": "Graines de moringa pour l’énergie, l’équilibre glycémique et l’immunité.",
     "benefits": ["Energy Support", "Glycemia Balance", "Immune Boost", "Antioxidant Protection"],
     "benefits_fr": ["Soutien énergétique", "Équilibre glycémique", "Renforcement immunitaire", "Protection antioxydante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/moringa-seeds.webp",
+    "images": [
+      "/images/products/moringa-seeds.webp",
+      "/images/products/moringa-seeds-2.webp",
+      "/images/products/moringa-seeds-3.jpg"
+    ]
   },
   {
     "id": "graine-de-moringa-bio-1kg-lutte-contre-prevention-et-lutte-contre-le-diabete-l-hypertension-et-le-mauvais-cholesterol",
@@ -927,7 +1092,12 @@ export const products = [
     "description_fr": "Graines de moringa en format vrac pour l’équilibre métabolique.",
     "benefits": ["Metabolic Balance", "Cholesterol Reduction", "Blood Pressure Support", "Daily Vitality"],
     "benefits_fr": ["Équilibre métabolique", "Réduction du cholestérol", "Soutien tension artérielle", "Vitalité quotidienne"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/moringa-seeds.webp",
+    "images": [
+      "/images/products/moringa-seeds.webp",
+      "/images/products/moringa-seeds-2.webp",
+      "/images/products/moringa-seeds-3.jpg"
+    ]
   },
   {
     "id": "orviar-advanced-face-repair-with-vitamin-c-la-meilleure-solution-acneique",
@@ -942,7 +1112,7 @@ export const products = [
     "description_fr": "Sérum Vitamine C pour réduire l’acné, réparer la peau et illuminer le teint.",
     "benefits": ["Acne Reduction", "Skin Repair", "Radiance Enhancement", "Anti-Blemish Support"],
     "benefits_fr": ["Réduction de l’acné", "Réparation cutanée", "Éclat du teint", "Soutien anti-imperfections"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-vitamin-c-serum.webp"
   },
   {
     "id": "sel-rose-himalaya-poudre-907g",
@@ -957,7 +1127,11 @@ export const products = [
     "description_fr": "Sel rose en poudre pour la détox et l’équilibre minéral.",
     "benefits": ["Detoxification", "Mineral Balance", "Hydration Support", "Electrolyte Regulation"],
     "benefits_fr": ["Détoxification", "Équilibre minéral", "Soutien hydratation", "Régulation électrolytique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-pink-salt-powder.jpg",
+    "images": [
+      "/images/products/himalayan-pink-salt-powder.jpg",
+      "/images/products/himalayan pink salt powder 2.webp"
+    ]
   },
   {
     "id": "poudre-de-maca-bio-organic-peruvian-maca-powder-100g",
@@ -972,7 +1146,7 @@ export const products = [
     "description_fr": "Poudre de maca pour l’énergie, la libido et l’équilibre hormonal.",
     "benefits": ["Energy Boost", "Libido Support", "Hormonal Balance", "Endurance Enhancement"],
     "benefits_fr": ["Boost d’énergie", "Soutien libido", "Équilibre hormonal", "Amélioration de l’endurance"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/triple-maca-powder.webp"
   },
   {
     "id": "charbon-actif-de-noix-de-coco-remede-anti-poison",
@@ -987,7 +1161,12 @@ export const products = [
     "description_fr": "Charbon actif pour la détox digestive et l’élimination des toxines.",
     "benefits": ["Toxin Removal", "Digestive Comfort", "Gas Reduction", "Detox Support"],
     "benefits_fr": ["Élimination des toxines", "Confort digestif", "Réduction des gaz", "Soutien détox"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/kwal-activated-charcoal-powder.webp",
+    "images": [
+      "/images/products/kwal-activated-charcoal-powder.webp",
+      "/images/products/kwal-activated-charcoal-powder-2.webp",
+      "/images/products/kwal-activated-charcoal-powder-3.webp"
+    ]
   },
   {
     "id": "huile-essentielle-darbre-a-the-bio-tea-tree-oil-30-ml",
@@ -1002,7 +1181,7 @@ export const products = [
     "description_fr": "Huile d'arbre à thé pour purifier la peau et la nettoyer.",
     "benefits": ["Antibacterial Support", "Skin Purification", "Immune Defense", "Antifungal Support"],
     "benefits_fr": ["Soutien antibactérien", "Purification de la peau", "Défense immunitaire", "Soutien antifongique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-tea-tree-oil-30ml.webp"
   },
   {
     "id": "huile-essentielle-d-eucalyptus-30ml",
@@ -1017,7 +1196,7 @@ export const products = [
     "description_fr": "Huile d'eucalyptus pour le confort respiratoire et l'air pur.",
     "benefits": ["Respiratory Comfort", "Airway Opening", "Purification", "Mental Clarity"],
     "benefits_fr": ["Confort respiratoire", "Dégagement des voies aériennes", "Purification", "Clarté mentale"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-eucalyptus-oil-30ml.webp"
   },
   {
     "id": "huile-essentielle-de-lavande-bio-30-ml",
@@ -1032,7 +1211,7 @@ export const products = [
     "description_fr": "Huile de lavande apaisante pour le sommeil et la relaxation.",
     "benefits": ["Relaxation", "Sleep Support", "Skin Comfort", "Stress Reduction"],
     "benefits_fr": ["Relaxation", "Soutien du sommeil", "Confort cutané", "Réduction du stress"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-lavander-30ml.webp"
   },
   {
     "id": "huile-essentielle-d-encens-bio-frankinsens-30ml",
@@ -1047,7 +1226,7 @@ export const products = [
     "description_fr": "Huile essentielle d'encens pour la peau et la sérénité.",
     "benefits": ["Immune Support", "Emotional Balance", "Skin Rejuvenation", "Anti-Inflammatory Benefits"],
     "benefits_fr": ["Soutien immunitaire", "Équilibre émotionnel", "Régénération cutanée", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-frankisens-30ml.webp"
   },
   {
     "id": "huile-essentielle-dylang-ylang-bio-30-ml",
@@ -1062,7 +1241,7 @@ export const products = [
     "description_fr": "Huile d'ylang-ylang relaxante pour le corps et l'esprit.",
     "benefits": ["Relaxation", "Skin Balance", "Emotional Harmony", "Aromatherapy Support"],
     "benefits_fr": ["Relaxation", "Équilibre de la peau", "Harmonie émotionnelle", "Soutien aromathérapie"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-ylan-ylan-30ml.webp"
   },
   {
     "id": "copy-of-huile-de-bergamote-100-ml-antiseptique-regenerante-cutanee",
@@ -1077,7 +1256,7 @@ export const products = [
     "description_fr": "Huile de bergamote pour purifier la peau et équilibrer les émotions.",
     "benefits": ["Skin Purification", "Emotional Uplift", "Antibacterial Support", "Stress Relief"],
     "benefits_fr": ["Purification de la peau", "Équilibre émotionnel", "Soutien antibactérien", "Réduction du stress"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-bergamote-oil-30ml.webp"
   },
   {
     "id": "huile-de-clou-de-girofle-30-ml",
@@ -1092,7 +1271,7 @@ export const products = [
     "description_fr": "Huile de clou de girofle pour la santé buccale et antimicrobienne.",
     "benefits": ["Antimicrobial Defense", "Oral Care", "Pain Relief", "Anti-Inflammatory Support"],
     "benefits_fr": ["Défense antimicrobienne", "Soin buccal", "Soulagement des douleurs", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-cloves-oil-30ml.webp"
   },
   {
     "id": "huile-essentielle-de-romarin-30ml",
@@ -1107,7 +1286,7 @@ export const products = [
     "description_fr": "Huile de romarin pour les cheveux et la mémoire.",
     "benefits": ["Hair Growth Support", "Mental Clarity", "Respiratory Comfort", "Anti-Inflammatory Support"],
     "benefits_fr": ["Soutien croissance capillaire", "Clarté mentale", "Confort respiratoire", "Bienfaits anti-inflammatoires"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-rosemary-30ml.webp"
   },
   {
     "id": "huile-de-vetiver-lutte-contre-les-douleurs-articulaires-et-musculaire-100-ml",
@@ -1122,7 +1301,7 @@ export const products = [
     "description_fr": "Huile de vétiver pour le confort articulaire et musculaire.",
     "benefits": ["Joint Comfort", "Muscle Relief", "Emotional Grounding", "Relaxation Support"],
     "benefits_fr": ["Confort articulaire", "Relaxation musculaire", "Ancrage émotionnel", "Soutien relaxation"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-vetiver-30ml.webp"
   },
   {
     "id": "infusion-fertilite-bio-hello-baby-pour-les-femmes",
@@ -1137,7 +1316,7 @@ export const products = [
     "description_fr": "Tisane naturelle pour le soutien de la fertilité féminine.",
     "benefits": ["Hormonal Balance", "Reproductive Wellness", "Emotional Calm", "Stress Reduction"],
     "benefits_fr": ["Équilibre hormonal", "Soutien fertilité", "Calme émotionnel", "Réduction du stress"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/hello-baby-woman_.jpg"
   },
   {
     "id": "la-cure-mertha-contre-le-diabete-de-type-1-2",
@@ -1152,7 +1331,11 @@ export const products = [
     "description_fr": "Poudre naturelle pour l’équilibre glycémique.",
     "benefits": ["Glycemia Balance", "Metabolic Support", "Energy Regulation", "Detoxification"],
     "benefits_fr": ["Équilibre glycémique", "Soutien métabolique", "Régulation énergétique", "Détoxification"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/cure-mertha-powder.webp",
+    "images": [
+      "/images/products/cure-mertha-powder.webp",
+      "/images/products/cure-mertha-powder-2.webp"
+    ]
   },
   {
     "id": "amla-gold-hair-serum-croissance-rapide-des-cheveux-et-anti-chute",
@@ -1167,7 +1350,7 @@ export const products = [
     "description_fr": "Sérum capillaire à l’amla pour la croissance et la réduction de la chute.",
     "benefits": ["Hair Growth Support", "Root Strengthening", "Reduced Hair Fall", "Scalp Nourishment"],
     "benefits_fr": ["Soutien croissance capillaire", "Renforcement des racines", "Réduction de la chute", "Nourrissement du cuir chevelu"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/amla-gold-hair-serum.webp"
   },
   {
     "id": "ashwagandha-en-poudre-bio-ginseng-indien-100g",
@@ -1182,7 +1365,12 @@ export const products = [
     "description_fr": "Poudre d’ashwagandha pour l’énergie et l’équilibre du stress.",
     "benefits": ["Stress Reduction", "Energy Support", "Emotional Balance", "Immune Support"],
     "benefits_fr": ["Réduction du stress", "Soutien énergétique", "Équilibre émotionnel", "Soutien immunitaire"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/ashwagandha-powder.webp",
+    "images": [
+      "/images/products/ashwagandha-powder.webp",
+      "/images/products/ashwagandha-powder-2.webp",
+      "/images/products/ashwagandha-powder-3.jpg"
+    ]
   },
   {
     "id": "poudre-psyllium-blond-bio-200g-teguments-riche-en-fibres-digestion-cholesterol",
@@ -1197,7 +1385,12 @@ export const products = [
     "description_fr": "Psyllium blond pour la digestion et le contrôle du cholestérol.",
     "benefits": ["Digestive Regularity", "Cholesterol Balance", "Gut Comfort", "Satiety Support"],
     "benefits_fr": ["Régularité digestive", "Équilibre du cholestérol", "Confort intestinal", "Soutien de la satiété"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orvia-psylium-powder.webp",
+    "images": [
+      "/images/products/orvia-psylium-powder.webp",
+      "/images/products/orvia-psylium-powder-2.webp",
+      "/images/products/orvia-psylium-powder-3.webp"
+    ]
   },
   {
     "id": "poudre-indienne-amla-100gr",
@@ -1212,7 +1405,12 @@ export const products = [
     "description_fr": "Poudre d’amla pour renforcer les cheveux et améliorer la brillance.",
     "benefits": ["Hair Strengthening", "Scalp Nourishment", "Natural Shine", "Root Support"],
     "benefits_fr": ["Renforcement capillaire", "Nourrissement du cuir chevelu", "Brillance naturelle", "Soutien des racines"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-amla-powder.webp",
+    "images": [
+      "/images/products/orviar-amla-powder.webp",
+      "/images/products/orviar-amla-powder-2.webp",
+      "/images/products/orviar-amla-powder-3.webp"
+    ]
   },
   {
     "id": "matcha-premium-japonais-en-poudre-bio-100g-energie-et-bien-etre",
@@ -1227,7 +1425,11 @@ export const products = [
     "description_fr": "Poudre de matcha pour l'énergie et la protection antioxydante.",
     "benefits": ["Energy Boost", "Antioxidant Protection", "Focus", "Metabolic Balance"],
     "benefits_fr": ["Boost d'énergie", "Protection antioxydante", "Concentration", "Équilibre métabolique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/matcha-premium-powder.webp",
+    "images": [
+      "/images/products/matcha-premium-powder.webp",
+      "/images/products/matcha-premium-powder-2.jpg"
+    ]
   },
   {
     "id": "collagene-marin-hydrolyse-poudre-200g",
@@ -1242,7 +1444,11 @@ export const products = [
     "description_fr": "Collagène marin pour l’élasticité de la peau et le confort articulaire.",
     "benefits": ["Skin Elasticity", "Joint Comfort", "Youthful Appearance", "Protein Support"],
     "benefits_fr": ["Élasticité de la peau", "Confort articulaire", "Apparence rajeunie", "Soutien protéique"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-marin-collagen-powder.webp",
+    "images": [
+      "/images/products/orviar-marin-collagen-powder.webp",
+      "/images/products/orviar-marin-collagen-powder-2.webp"
+    ]
   },
   {
     "id": "les-graines-de-nigelle-aux-vertus-extraordinaires",
@@ -1257,7 +1463,12 @@ export const products = [
     "description_fr": "Graines de nigelle pour l’équilibre glycémique et l’immunité.",
     "benefits": ["Glycemia Balance", "Immune Strength", "Anti-Inflammatory Support", "Digestive Wellness"],
     "benefits_fr": ["Équilibre glycémique", "Renforcement immunitaire", "Soutien anti-inflammatoire", "Confort digestif"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/black-seeds.webp",
+    "images": [
+      "/images/products/black-seeds.webp",
+      "/images/products/black-seeds-2.webp",
+      "/images/products/black-seeds-3.webp"
+    ]
   },
   {
     "id": "huile-vegetale-damande-douce-bio-1-litre",
@@ -1272,7 +1483,7 @@ export const products = [
     "description_fr": "Huile d’amande douce pour la douceur et l’hydratation de la peau.",
     "benefits": ["Skin Softening", "Deep Hydration", "Skin Elasticity", "Soothing Care"],
     "benefits_fr": ["Douceur de la peau", "Hydratation profonde", "Élasticité cutanée", "Soin apaisant"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/sweet-almond-oil-1000ml.webp"
   },
   {
     "id": "huile-de-graine-nigelle-100-ml-lutte-contre-rhume-l-asthme-copy",
@@ -1287,7 +1498,7 @@ export const products = [
     "description_fr": "Huile de nigelle pour le confort respiratoire et l’immunité.",
     "benefits": ["Respiratory Comfort", "Immune Support", "Anti-Inflammatory Support", "Skin Purification"],
     "benefits_fr": ["Confort respiratoire", "Soutien immunitaire", "Soutien anti-inflammatoire", "Purification de la peau"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-black-seed-oil-1-litre.webp"
   },
   {
     "id": "huile-de-jojoba-bio-regule-les-secretions-de-sebum-copy",
@@ -1302,7 +1513,7 @@ export const products = [
     "description_fr": "Huile de jojoba pour réguler le sébum et équilibrer la peau.",
     "benefits": ["Sebum Regulation", "Skin Balance", "Acne Reduction", "Hydration Support"],
     "benefits_fr": ["Régulation du sébum", "Équilibre cutané", "Réduction de l’acné", "Soutien hydratation"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/argan-oil.webp"
   },
   {
     "id": "huile-davocat-pression-a-froid-bio-pousser-capillaire-rapide-100-ml-copy",
@@ -1317,7 +1528,12 @@ export const products = [
     "description_fr": "Huile d’avocat pour la pousse capillaire et l’hydratation profonde.",
     "benefits": ["Hair Growth Support", "Scalp Nourishment", "Deep Hydration", "Skin Softening"],
     "benefits_fr": ["Soutien pousse capillaire", "Nourrissement du cuir chevelu", "Hydratation profonde", "Douceur de la peau"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/avocado-oil.webp",
+    "images": [
+      "/images/products/avocado-oil.webp",
+      "/images/products/avocado-oil-2.webp",
+      "/images/products/avocado-oil-3.webp"
+    ]
   },
   {
     "id": "huile-de-neem-bio-anti-bacterienne-anti-fongique-100-ml-copy",
@@ -1332,7 +1548,7 @@ export const products = [
     "description_fr": "Huile de neem pour purifier la peau et équilibrer le cuir chevelu.",
     "benefits": ["Antibacterial Support", "Antifungal Support", "Skin Purification", "Scalp Balance"],
     "benefits_fr": ["Soutien antibactérien", "Soutien antifongique", "Purification de la peau", "Équilibre du cuir chevelu"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-neem-powder.webp"
   },
   {
     "id": "huile-de-pepin-de-raisin-luttre-contre-les-pellicules-et-nourrit-le-cuir-chevelu-100-ml-copy",
@@ -1347,7 +1563,12 @@ export const products = [
     "description_fr": "Huile de pépin de raisin pour nourrir le cuir chevelu et hydrater sans lourdeur.",
     "benefits": ["Scalp Nourishment", "Lightweight Hydration", "Dandruff Reduction", "Skin Softening"],
     "benefits_fr": ["Nourrissement du cuir chevelu", "Hydratation légère", "Réduction des pellicules", "Douceur cutanée"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-grapseed-oil.webp",
+    "images": [
+      "/images/products/organic-grapseed-oil.webp",
+      "/images/products/organic-grapseed-oil-2.webp",
+      "/images/products/organic-grapseed-oil-3.webp"
+    ]
   },
   {
     "id": "huile-rose-de-musquee-bio-puissant-anti-age-1-litre",
@@ -1362,7 +1583,13 @@ export const products = [
     "description_fr": "Huile régénérante anti-âge.",
     "benefits": ["Skin regeneration", "Anti-aging support", "Improved elasticity", "Natural radiance"],
     "benefits_fr": ["Régénération cutanée", "Action anti-âge", "Améliore l’élasticité", "Apporte éclat naturel"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-rosehip-oil.webp",
+    "images": [
+      "/images/products/organic-rosehip-oil.webp",
+      "/images/products/organic-rosehip-oil-2.webp",
+      "/images/products/organic-rosehip-oil-3.webp",
+      "/images/products/organic-rosehip-oil-4.webp"
+    ]
   },
   {
     "id": "huile-de-graines-de-lin-1-litre-hydratation-et-reduction-des-inflammations",
@@ -1377,7 +1604,12 @@ export const products = [
     "description_fr": "Huile hydratante et apaisante.",
     "benefits": ["Deep hydration", "Inflammation reduction", "Skin comfort", "Omega-3 nourishment"],
     "benefits_fr": ["Hydratation profonde", "Réduction des inflammations", "Confort cutané", "Apport en oméga-3"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/flaxSeed-oil-100ml.webp",
+    "images": [
+      "/images/products/flaxSeed-oil-100ml.webp",
+      "/images/products/flaxSeed-oil-100ml-2.webp",
+      "/images/products/flaxSeed-oil-100ml-3.webp"
+    ]
   },
   {
     "id": "huile-dargan-bio-peau-cicatrisante-infection-acnetique-1-litre",
@@ -1392,7 +1624,12 @@ export const products = [
     "description_fr": "Huile réparatrice pour peau acnéique.",
     "benefits": ["Skin repair", "Scar reduction", "Acne inflammation relief", "Skin softness"],
     "benefits_fr": ["Répare la peau", "Réduit les cicatrices", "Diminue l’inflammation acnéique", "Adoucit la peau"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/argan-oil.webp",
+    "images": [
+      "/images/products/argan-oil.webp",
+      "/images/products/argan-oil-2.webp",
+      "/images/products/argan-oil-3.webp"
+    ]
   },
   {
     "id": "maca-jaune-en-poudre-racine-du-perou-boost-de-la-libido-100-gr",
@@ -1407,7 +1644,7 @@ export const products = [
     "description_fr": "Poudre de maca pour énergie et libido.",
     "benefits": ["Energy boost", "Libido support", "Hormonal balance", "Vitality enhancement"],
     "benefits_fr": ["Boost d’énergie", "Soutien de la libido", "Équilibre hormonal", "Renforce la vitalité"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/yellow-maca-powder.webp"
   },
   {
     "id": "huile-essentielle-de-menthe-poivree-30-ml-pure-et-naturelle-ebotanique",
@@ -1422,7 +1659,7 @@ export const products = [
     "description_fr": "Huile rafraîchissante et respiratoire.",
     "benefits": ["Respiratory comfort", "Mental clarity", "Tension relief", "Refreshing aroma"],
     "benefits_fr": ["Confort respiratoire", "Clarté mentale", "Soulage les tensions", "Effet rafraîchissant"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/essential-oil-rosemary-30ml.webp"
   },
   {
     "id": "huile-essentielle-de-menthe-poivree-100-ml-pure-et-naturelle",
@@ -1437,7 +1674,7 @@ export const products = [
     "description_fr": "Huile rafraîchissante en grand format.",
     "benefits": ["Respiratory comfort", "Mental clarity", "Muscle soothing", "Invigorating freshness"],
     "benefits_fr": ["Facilite la respiration", "Améliore la concentration", "Apaise les muscles", "Fraîcheur revitalisante"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/rosemary-essential-oil-100ml.webp"
   },
   {
     "id": "complement-alimentaire-shilajit-boost-la-libido-et-combat-les-troubles-de-lerection",
@@ -1452,7 +1689,7 @@ export const products = [
     "description_fr": "Shilajit pour vitalité masculine.",
     "benefits": ["Libido enhancement", "Energy increase", "Male wellness support", "Vitality boost"],
     "benefits_fr": ["Améliore la libido", "Augmente l’énergie", "Soutient le bien-être masculin", "Renforce la vitalité"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/shilajit-en-résine-orviar.webp"
   },
   {
     "id": "glycemia-infusion-ayurvedique-pour-equilibrer-le-taux-de-sucre-ebotanique-cameroun",
@@ -1467,7 +1704,11 @@ export const products = [
     "description_fr": "Infusion pour équilibre glycémique.",
     "benefits": ["Blood sugar balance", "Metabolic support", "Wellness maintenance", "Natural detox support"],
     "benefits_fr": ["Équilibre glycémique", "Soutien métabolique", "Maintien du bien-être", "Détox naturelle"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/glycemia-leaves-tea.jpg",
+    "images": [
+      "/images/products/glycemia-leaves-tea.jpg",
+      "/images/products/glycemia-leaves-tea-2.jpg"
+    ]
   },
   {
     "id": "infusion-feuilles-d-ortie-soulage-l-arthrose-les-rhumatismes-100gr",
@@ -1482,7 +1723,11 @@ export const products = [
     "description_fr": "Infusion pour soulager les articulations.",
     "benefits": ["Joint comfort", "Inflammation reduction", "Muscle relief", "Nutrient support"],
     "benefits_fr": ["Soulage les articulations", "Réduit l’inflammation", "Apaise les muscles", "Apport nutritif"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/nettle-leaves-tea.webp",
+    "images": [
+      "/images/products/nettle-leaves-tea.webp",
+      "/images/products/nettle-leaves-tea-2.jpg"
+    ]
   },
   {
     "id": "la-poudre-de-nila-bleu-indigo-marocaine-ebotanique-cameroun",
@@ -1497,7 +1742,12 @@ export const products = [
     "description_fr": "Poudre indigo pour éclaircir la peau.",
     "benefits": ["Skin brightening", "Complexion unifying", "Natural radiance", "Smooth appearance"],
     "benefits_fr": ["Éclaircit la peau", "Unifie le teint", "Apporte éclat", "Lisse l’apparence"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/nila-powder.webp",
+    "images": [
+      "/images/products/nila-powder.webp",
+      "/images/products/nila-powder-2.jpg",
+      "/images/products/nila-powder-3.jpg"
+    ]
   },
   {
     "id": "poudre-de-qasil-sidr-jujubier-nettoyant-naturel-visage-cheveux-cameroun-100gr",
@@ -1512,7 +1762,7 @@ export const products = [
     "description_fr": "Nettoyant naturel visage et cheveux.",
     "benefits": ["Gentle cleansing", "Impurity removal", "Skin smoothing", "Hair freshness"],
     "benefits_fr": ["Nettoyage doux", "Élimine les impuretés", "Lisse la peau", "Apporte fraîcheur aux cheveux"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/qasil.webp"
   },
   {
     "id": "argile-verte-100-naturelle-beaute-bien-etre-naturel-au-cameroun",
@@ -1527,7 +1777,12 @@ export const products = [
     "description_fr": "Argile purifiante pour détox cutanée.",
     "benefits": ["Oil absorption", "Pore purification", "Detoxifying effect", "Skin balance"],
     "benefits_fr": ["Absorbe le sébum", "Purifie les pores", "Effet détox", "Équilibre la peau"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/orviar-green-clay.webp",
+    "images": [
+      "/images/products/orviar-green-clay.webp",
+      "/images/products/orviar-green-clay-2.jpg",
+      "/images/products/orviar-green-clay-3.jpg"
+    ]
   },
   {
     "id": "poudre-bois-de-santal-naturelle-cameroun",
@@ -1542,7 +1797,7 @@ export const products = [
     "description_fr": "Poudre de santal apaisante.",
     "benefits": ["Skin soothing", "Irritation reduction", "Natural glow", "Complexion clarity"],
     "benefits_fr": ["Apaise la peau", "Réduit les irritations", "Apporte éclat", "Unifie le teint"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/sandalwood-powder.webp"
   },
   {
     "id": "proteine-lactoserum-whey-cameroun",
@@ -1557,7 +1812,7 @@ export const products = [
     "description_fr": "Whey pour soutien musculaire.",
     "benefits": ["Muscle recovery", "Strength support", "Nutritional balance", "Energy maintenance"],
     "benefits_fr": ["Récupération musculaire", "Soutien de la force", "Équilibre nutritionnel", "Maintien de l’énergie"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/whey-protein-powder-vanilla.jpg"
   },
   {
     "id": "huile-dorigan-bio-lutte-contre-les-infections-aigues-et-chroniques-gale-mycoses-teigne-abces-copy",
@@ -1572,7 +1827,11 @@ export const products = [
     "description_fr": "Huile antimicrobienne puissante.",
     "benefits": ["Antimicrobial action", "Immune support", "Antifungal benefits", "Antibacterial protection"],
     "benefits_fr": ["Action antimicrobienne", "Soutien immunitaire", "Bienfaits antifongiques", "Protection antibactérienne"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/oregano-oil.webp",
+    "images": [
+      "/images/products/oregano-oil.webp",
+      "/images/products/oregano-oil-2.webp"
+    ]
   },
   {
     "id": "complement-alimentaire-men-desire",
@@ -1587,7 +1846,7 @@ export const products = [
     "description_fr": "Vitalité et libido masculine.",
     "benefits": ["Libido enhancement", "Hormonal support", "Male vitality", "Energy boost"],
     "benefits_fr": ["Améliore la libido", "Soutien hormonal", "Vitalité masculine", "Boost d’énergie"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/male-desire-orviar.webp"
   },
   {
     "id": "poudre-de-cannelle-spirituelle-traditionnelle-du-sri-lanka-100gr",
@@ -1602,7 +1861,7 @@ export const products = [
     "description_fr": "Cannelle pour bien-être et rituels.",
     "benefits": ["Metabolism support", "Aromatic wellness", "Antioxidant benefits", "Traditional ritual use"],
     "benefits_fr": ["Soutien du métabolisme", "Bien-être aromatique", "Antioxydants", "Usage rituel traditionnel"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/spiritual-cinnamon.webp"
   },
   {
     "id": "poudre-indienne-reetha-aritha-bio-250gr",
@@ -1617,7 +1876,11 @@ export const products = [
     "description_fr": "Shampoing naturel en poudre.",
     "benefits": ["Hair cleansing", "Shine enhancement", "Scalp health", "Natural foam action"],
     "benefits_fr": ["Nettoie les cheveux", "Apporte brillance", "Santé du cuir chevelu", "Mousse naturelle"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/organic-reetha-powder.jpg",
+    "images": [
+      "/images/products/organic-reetha-powder.jpg",
+      "/images/products/organic-reetha-powder-2.webp"
+    ]
   },
   {
     "id": "lampe-de-sel-d-himalaya-bol-en-bois",
@@ -1632,7 +1895,7 @@ export const products = [
     "description_fr": "Lampe de sel pour ambiance relaxante.",
     "benefits": ["Relaxation support", "Air freshness", "Calming ambiance", "Wellness atmosphere"],
     "benefits_fr": ["Favorise la relaxation", "Améliore la fraîcheur de l’air", "Ambiance apaisante", "Atmosphère bien-être"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-lamp-bowl.jpg"
   },
   {
     "id": "lampe-de-sel-d-himalaya-carre-en-bois",
@@ -1647,6 +1910,6 @@ export const products = [
     "description_fr": "Lampe de sel carrée pour ambiance relaxante.",
     "benefits": ["Relaxation support", "Air freshness", "Calming ambiance", "Wellness atmosphere"],
     "benefits_fr": ["Favorise la relaxation", "Améliore la fraîcheur de l’air", "Ambiance apaisante", "Atmosphère bien-être"],
-    "image": "/assets/placeholder.jpg"
+    "image": "/images/products/himalayan-lamp-wooden-square.jpg"
   }
 ];

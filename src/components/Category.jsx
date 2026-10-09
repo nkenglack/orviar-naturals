@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, Box, X, Search, Tag } from 'lucide-react';
+import { ArrowLeft, Box, X, Search, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { products as catalog } from '../data/products';
@@ -9,6 +9,7 @@ const Category = () => {
   const { name, type, benefit } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const { i18n } = useTranslation();
 
   const isFrench = (i18n.language || 'en').toLowerCase().startsWith('fr');
@@ -18,14 +19,19 @@ const Category = () => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
+  // Reset image index when opening a new product modal
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [selectedProduct]);
+
   // Dynamic Banner Image Selection
   const getBannerImage = () => {
     if (type) {
       const typeBanners = {
         'supplements': '/images/banners/supplements.jpg',
-        'superfoods': '/images/banners/superfoods.png',
+        'superfoods': '/images/banners/superfoods.jpg',
         'teas': '/images/banners/teas.jpg',
-        'oils': '/images/banners/oils.png',
+        'oils': '/images/banners/oils.jpg',
         'beauty': '/images/banners/beauty.jpg',
         'home-wellness': '/images/banners/home-wellness.jpg'
       };
@@ -92,31 +98,33 @@ const Category = () => {
       if (product.category !== name) return false;
     }
 
-    if (type) {
-      const pt = (product.product_type || '').toLowerCase();
-      const ptFr = (product.product_type_fr || '').toLowerCase();
-      const cat = (product.category || '').toLowerCase();
+    const targetType = type || (name && name !== 'all' && name !== 'all-products' ? name : null);
 
-      if (type === 'beauty') {
-        const isBeauty = cat === 'beauty' || pt.includes('beauty') || pt.includes('hair') || ptFr.includes('beauté') || ptFr.includes('capillaire') || ptFr.includes('soin');
-        if (!isBeauty) return false;
-      } else if (type === 'supplements') {
-        const isSupp = (cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || ptFr.includes('complément')) && cat !== 'beauty';
-        if (!isSupp) return false;
-      } else if (type === 'superfoods') {
-        const isSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('spice') || ptFr.includes('poudre') || ptFr.includes('superaliment') || ptFr.includes('épice');
-        if (!isSuper) return false;
-      } else if (type === 'teas') {
-        const isTea = cat === 'teas' || pt.includes('tea') || ptFr.includes('tisane') || ptFr.includes('infusion');
-        if (!isTea) return false;
-      } else if (type === 'oils') {
-        const isOil = cat === 'oils' || pt.includes('oil') || ptFr.includes('huile');
-        if (!isOil) return false;
-      } else if (type === 'home-wellness') {
-        const isHome = cat === 'home-wellness' || pt.includes('home') || ptFr.includes('maison') || pt.includes('lamp') || pt.includes('salt');
-        if (!isHome) return false;
-      }
-    }
+if (targetType) {
+  const pt = (product.product_type || '').toLowerCase();
+  const ptFr = (product.product_type_fr || '').toLowerCase();
+  const cat = (product.category || '').toLowerCase();
+
+  if (targetType === 'beauty') {
+    const isBeauty = cat === 'beauty' || pt.includes('beauty') || pt.includes('hair') || ptFr.includes('beauté') || ptFr.includes('capillaire') || ptFr.includes('soin');
+    if (!isBeauty) return false;
+  } else if (targetType === 'supplements') {
+    const isSupp = (cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || ptFr.includes('complément')) && cat !== 'beauty';
+    if (!isSupp) return false;
+  } else if (targetType === 'superfoods') {
+    const isSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('spice') || ptFr.includes('poudre') || ptFr.includes('superaliment') || ptFr.includes('épice');
+    if (!isSuper) return false;
+  } else if (targetType === 'teas') {
+    const isTea = cat === 'teas' || pt.includes('tea') || ptFr.includes('tisane') || ptFr.includes('infusion');
+    if (!isTea) return false;
+  } else if (targetType === 'oils' || targetType === 'essential-oils') {
+    const isOil = cat === 'oils' || pt.includes('oil') || ptFr.includes('huile');
+    if (!isOil) return false;
+  } else if (targetType === 'home-wellness') {
+    const isHome = cat === 'home-wellness' || pt.includes('home') || ptFr.includes('maison') || pt.includes('lamp') || pt.includes('salt');
+    if (!isHome) return false;
+  }
+}
 
     if (benefit) {
       const benefitKeywords = {
@@ -167,27 +175,24 @@ const Category = () => {
     }
   };
 
+  // Gallery Array Helper
+  const selectedGallery = selectedProduct 
+    ? (selectedProduct.images && selectedProduct.images.length > 0 ? selectedProduct.images : [selectedProduct.image])
+    : [];
+
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
       
-      {/* Full-Width Image Banner with Gradient Overlay */}
+      {/* Full-Width Banner */}
       <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-900 flex items-center justify-center overflow-hidden mb-12 shadow-md">
-        
-        {/* Responsive Background Image */}
         <img 
           src={bannerImage} 
           alt={title} 
           className="absolute inset-0 w-full h-full object-cover object-center"
-          onError={(e) => {
-            // Fallback to rich green background if image is missing
-            e.target.style.display = 'none';
-          }}
+          onError={(e) => { e.target.style.display = 'none'; }}
         />
-
-        {/* Dark Gradient Overlay for Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/60 to-black/40" />
 
-        {/* Banner Content */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -241,6 +246,7 @@ const Category = () => {
             const displayDesc = isFrench ? (product.description_fr || product.description) : product.description;
             const displayType = isFrench ? (product.product_type_fr || product.product_type) : product.product_type;
             const displayBenefits = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
+            const hasMultipleImages = product.images && product.images.length > 1;
 
             return (
               <motion.div 
@@ -264,6 +270,12 @@ const Category = () => {
                       {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
                     </span>
                   </div>
+
+                  {hasMultipleImages && (
+                    <span className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+                      +{product.images.length} photos
+                    </span>
+                  )}
                 </div>
                 
                 <div className="p-6 flex flex-col flex-grow">
@@ -316,32 +328,75 @@ const Category = () => {
       {/* Product Detail Modal */}
       <AnimatePresence>
         {selectedProduct && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-950/60 backdrop-blur-sm overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden relative"
+              className="bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden relative my-8"
             >
               <button 
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-600 hover:text-gray-900 transition-colors z-10 shadow-sm"
+                className="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-600 hover:text-gray-900 transition-colors z-20 shadow-sm"
               >
                 <X size={20} />
               </button>
               
-              <div className="h-64 bg-gray-100 flex items-center justify-center relative">
-                <img 
-                  src={selectedProduct.image} 
+              {/* Modal Main Image Display */}
+              <div className="h-72 bg-gray-100 flex items-center justify-center relative overflow-hidden group">
+                <motion.img 
+                  key={activeImageIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  src={selectedGallery[activeImageIndex]} 
                   alt={isFrench ? (selectedProduct.title_fr || selectedProduct.title) : selectedProduct.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain p-4"
                   onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
                 />
                 <div className="hidden text-gray-400 flex-col items-center gap-2">
                   <Box size={48} />
                 </div>
+
+                {/* Arrow Controls */}
+                {selectedGallery.length > 1 && (
+                  <>
+                    <button 
+                      onClick={() => setActiveImageIndex((prev) => (prev - 1 + selectedGallery.length) % selectedGallery.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/30 text-white hover:bg-black/60 transition-colors backdrop-blur-sm"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button 
+                      onClick={() => setActiveImageIndex((prev) => (prev + 1) % selectedGallery.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/30 text-white hover:bg-black/60 transition-colors backdrop-blur-sm"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </>
+                )}
               </div>
+
+              {/* Gallery Thumbnail Strip */}
+              {selectedGallery.length > 1 && (
+                <div className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-50 border-b border-gray-100 overflow-x-auto">
+                  {selectedGallery.map((imgUrl, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`w-14 h-14 rounded-xl border-2 overflow-hidden transition-all shrink-0 ${
+                        activeImageIndex === idx 
+                          ? 'border-brand-green scale-105 shadow-sm ring-2 ring-brand-green/20' 
+                          : 'border-gray-200 opacity-60 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={imgUrl} alt="" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
               
+              {/* Modal Details Content */}
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
                   {isFrench ? (selectedProduct.product_type_fr || selectedProduct.product_type) : selectedProduct.product_type}
@@ -368,7 +423,7 @@ const Category = () => {
 
                 <button 
                   onClick={() => setSelectedProduct(null)}
-                  className="w-full py-3.5 bg-brand-green text-white rounded-xl font-bold hover:bg-green-800 transition-colors shadow-md"
+                  className="w-full py-3.5 bg-brand-green text-white rounded-xl font-bold hover:bg-green-800 transition-colors shadow-md uppercase tracking-wider text-xs"
                 >
                   {isFrench ? 'Fermer les Détails' : 'Close Details'}
                 </button>
