@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans" key={lang}>
+      <ScrollToTop />
       <Navbar />
       <div className="flex-grow">
         <Routes>

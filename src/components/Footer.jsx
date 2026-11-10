@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, X } from 'lucide-react';
+import { Mail, Phone, MapPin, X, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -17,10 +17,26 @@ const Footer = () => {
           
           {/* Brand Column */}
           <div>
-            <span className="font-extrabold text-3xl text-white tracking-widest uppercase mb-6 block">ORVIAR</span>
+            <span className="font-extrabold text-3xl text-white tracking-widest uppercase mb-4 block">ORVIAR</span>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               {t('footer.tagline')}
             </p>
+
+            {/* Exclusive Distributor Badge */}
+            <div className="pt-4 border-t border-gray-800">
+              <div className="flex items-center gap-2 mb-1">
+                <ShieldCheck size={16} className="text-brand-green" />
+                <span className="font-bold text-xs text-brand-gold uppercase tracking-wider">
+                  {isFrench ? 'Distributeur Exclusif' : 'Exclusive Distributor'}
+                </span>
+              </div>
+              <p className="text-white font-semibold text-sm">E.Botanique</p>
+              <p className="text-gray-400 text-xs mt-1 leading-relaxed">
+                {isFrench 
+                  ? 'Distributeur officiel et partenaire exclusif de la marque Orviar Naturals.'
+                  : 'Official authorized distributor and exclusive partner for Orviar Naturals.'}
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}

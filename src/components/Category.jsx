@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, Box, X, Search, Tag, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Box, X, Search, Tag, ChevronLeft, ChevronRight, Droplets, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { products as catalog } from '../data/products';
@@ -19,23 +19,27 @@ const Category = () => {
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
-  // Reset image index when opening a new product modal
   useEffect(() => {
     setActiveImageIndex(0);
   }, [selectedProduct]);
 
+  // Determine active category type (handles routes and aliases)
+  const targetType = type || (name && name !== 'all' && name !== 'all-products' ? name : null);
+  const isOilsPage = targetType === 'oils' || targetType === 'essential-oils';
+
   // Dynamic Banner Image Selection
   const getBannerImage = () => {
-    if (type) {
+    if (targetType) {
       const typeBanners = {
         'supplements': '/images/banners/supplements.jpg',
         'superfoods': '/images/banners/superfoods.jpg',
         'teas': '/images/banners/teas.jpg',
         'oils': '/images/banners/oils.jpg',
+        'essential-oils': '/images/banners/oils.jpg',
         'beauty': '/images/banners/beauty.jpg',
         'home-wellness': '/images/banners/home-wellness.jpg'
       };
-      return typeBanners[type] || '/images/banners/default.jpg';
+      return typeBanners[targetType] || '/images/banners/default.jpg';
     }
 
     if (benefit) {
@@ -71,16 +75,17 @@ const Category = () => {
       return b ? (isFrench ? b.fr : b.en) : (isFrench ? 'Bienfaits Santé' : 'Health Benefits');
     }
 
-    if (type) {
+    if (targetType) {
       const typeTitles = {
         'supplements': { en: 'Dietary Supplements', fr: 'Compléments Alimentaires' },
         'superfoods': { en: 'Superfoods & Powders', fr: 'Superaliments et Poudres' },
         'teas': { en: 'Herbal Teas & Infusions', fr: 'Tisanes et Infusions' },
         'oils': { en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
+        'essential-oils': { en: 'Essential & Botanical Oils', fr: 'Huiles Essentielles et Végétales' },
         'beauty': { en: 'Beauty & Hair Care', fr: 'Soins de Beauté et Capillaires' },
         'home-wellness': { en: 'Home Wellness', fr: 'Bien-être de la Maison' }
       };
-      const tInfo = typeTitles[type];
+      const tInfo = typeTitles[targetType];
       return tInfo ? (isFrench ? tInfo.fr : tInfo.en) : (isFrench ? 'Catégories' : 'Categories');
     }
 
@@ -90,41 +95,37 @@ const Category = () => {
   const title = getHeaderInfo();
   const bannerImage = getBannerImage();
 
-  // Universal Filtering Engine
+  // Universal Filter Engine
   const filteredProducts = catalog.filter(product => {
     if (name === 'all' || name === 'all-products' || (!name && !type && !benefit)) {
       // Pass all
-    } else if (name) {
-      if (product.category !== name) return false;
     }
 
-    const targetType = type || (name && name !== 'all' && name !== 'all-products' ? name : null);
+    if (targetType) {
+      const pt = (product.product_type || '').toLowerCase();
+      const ptFr = (product.product_type_fr || '').toLowerCase();
+      const cat = (product.category || '').toLowerCase();
 
-if (targetType) {
-  const pt = (product.product_type || '').toLowerCase();
-  const ptFr = (product.product_type_fr || '').toLowerCase();
-  const cat = (product.category || '').toLowerCase();
-
-  if (targetType === 'beauty') {
-    const isBeauty = cat === 'beauty' || pt.includes('beauty') || pt.includes('hair') || ptFr.includes('beauté') || ptFr.includes('capillaire') || ptFr.includes('soin');
-    if (!isBeauty) return false;
-  } else if (targetType === 'supplements') {
-    const isSupp = (cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || ptFr.includes('complément')) && cat !== 'beauty';
-    if (!isSupp) return false;
-  } else if (targetType === 'superfoods') {
-    const isSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('spice') || ptFr.includes('poudre') || ptFr.includes('superaliment') || ptFr.includes('épice');
-    if (!isSuper) return false;
-  } else if (targetType === 'teas') {
-    const isTea = cat === 'teas' || pt.includes('tea') || ptFr.includes('tisane') || ptFr.includes('infusion');
-    if (!isTea) return false;
-  } else if (targetType === 'oils' || targetType === 'essential-oils') {
-    const isOil = cat === 'oils' || pt.includes('oil') || ptFr.includes('huile');
-    if (!isOil) return false;
-  } else if (targetType === 'home-wellness') {
-    const isHome = cat === 'home-wellness' || pt.includes('home') || ptFr.includes('maison') || pt.includes('lamp') || pt.includes('salt');
-    if (!isHome) return false;
-  }
-}
+      if (targetType === 'beauty') {
+        const isBeauty = cat === 'beauty' || pt.includes('beauty') || pt.includes('hair') || ptFr.includes('beauté') || ptFr.includes('capillaire') || ptFr.includes('soin');
+        if (!isBeauty) return false;
+      } else if (targetType === 'supplements') {
+        const isSupp = (cat === 'supplements' || pt.includes('supplement') || pt.includes('nutrition') || ptFr.includes('complément')) && cat !== 'beauty';
+        if (!isSupp) return false;
+      } else if (targetType === 'superfoods') {
+        const isSuper = cat === 'superfoods' || pt.includes('superfood') || pt.includes('powder') || pt.includes('spice') || ptFr.includes('poudre') || ptFr.includes('superaliment') || ptFr.includes('épice');
+        if (!isSuper) return false;
+      } else if (targetType === 'teas') {
+        const isTea = cat === 'teas' || pt.includes('tea') || ptFr.includes('tisane') || ptFr.includes('infusion');
+        if (!isTea) return false;
+      } else if (targetType === 'oils' || targetType === 'essential-oils') {
+        const isOil = cat === 'oils' || pt.includes('oil') || ptFr.includes('huile');
+        if (!isOil) return false;
+      } else if (targetType === 'home-wellness') {
+        const isHome = cat === 'home-wellness' || pt.includes('home') || ptFr.includes('maison') || pt.includes('lamp') || pt.includes('salt');
+        if (!isHome) return false;
+      }
+    }
 
     if (benefit) {
       const benefitKeywords = {
@@ -175,10 +176,94 @@ if (targetType) {
     }
   };
 
-  // Gallery Array Helper
   const selectedGallery = selectedProduct 
     ? (selectedProduct.images && selectedProduct.images.length > 0 ? selectedProduct.images : [selectedProduct.image])
     : [];
+
+  // Split into Essential vs Botanical Oils when on the Oils page
+  const essentialOils = isOilsPage
+    ? filteredProducts.filter(p => {
+        const pt = (p.product_type || '').toLowerCase();
+        const ptFr = (p.product_type_fr || '').toLowerCase();
+        return pt.includes('essential') || ptFr.includes('essentielle');
+      })
+    : [];
+
+  const botanicalOils = isOilsPage
+    ? filteredProducts.filter(p => {
+        const pt = (p.product_type || '').toLowerCase();
+        const ptFr = (p.product_type_fr || '').toLowerCase();
+        return !pt.includes('essential') && !ptFr.includes('essentielle');
+      })
+    : [];
+
+  // Product Card Sub-component
+  const renderProductCard = (product, index) => {
+    const displayTitle = isFrench ? (product.title_fr || product.title) : product.title;
+    const displayDesc = isFrench ? (product.description_fr || product.description) : product.description;
+    const displayType = isFrench ? (product.product_type_fr || product.product_type) : product.product_type;
+    const displayBenefits = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
+    const hasMultipleImages = product.images && product.images.length > 1;
+
+    return (
+      <motion.div 
+        key={`${product.id}-${index}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: Math.min(index * 0.03, 0.3) }}
+        className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
+        onClick={() => setSelectedProduct(product)}
+      >
+        <div className="h-60 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
+          <img 
+            src={product.image} 
+            alt={displayTitle} 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+          />
+          <div className="hidden text-gray-400 flex-col items-center gap-2">
+            <Box size={36} />
+            <span className="text-[10px] font-bold tracking-widest uppercase">
+              {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
+            </span>
+          </div>
+
+          {hasMultipleImages && (
+            <span className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+              +{product.images.length} photos
+            </span>
+          )}
+        </div>
+        
+        <div className="p-6 flex flex-col flex-grow">
+          <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-wider mb-2 block">
+            {displayType}
+          </span>
+          <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{displayTitle}</h3>
+          <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{displayDesc}</p>
+
+          {displayBenefits && displayBenefits.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
+              {displayBenefits.slice(0, 3).map((tag, tIdx) => (
+                <button 
+                  key={tIdx}
+                  onClick={(e) => { e.stopPropagation(); handleTagClick(tag); }}
+                  className="inline-flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1 bg-green-50 text-brand-green rounded-full hover:bg-brand-green hover:text-white transition-colors"
+                >
+                  <Tag size={10} />
+                  <span>{tag}</span>
+                </button>
+              ))}
+            </div>
+          )}
+
+          <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-bold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-xs uppercase tracking-wider">
+            {isFrench ? 'Voir Détails' : 'View Details'}
+          </button>
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24 relative">
@@ -219,7 +304,7 @@ if (targetType) {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
           <input 
             type="text" 
-            placeholder={isFrench ? "Rechercher un produit ou un bénéfice..." : "Search products or health benefit..."}
+            placeholder={isFrench ? "Rechercher une huile ou un bénéfice..." : "Search oils or health benefit..."}
             value={searchQuery}
             onChange={handleSearchChange}
             className="w-full pl-12 pr-10 py-3 bg-white border border-gray-200 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent shadow-sm"
@@ -239,75 +324,73 @@ if (targetType) {
           {isFrench ? `${filteredProducts.length} produits affichés` : `Showing ${filteredProducts.length} products`}
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product, index) => {
-            const displayTitle = isFrench ? (product.title_fr || product.title) : product.title;
-            const displayDesc = isFrench ? (product.description_fr || product.description) : product.description;
-            const displayType = isFrench ? (product.product_type_fr || product.product_type) : product.product_type;
-            const displayBenefits = isFrench ? (product.benefits_fr || product.benefits) : product.benefits;
-            const hasMultipleImages = product.images && product.images.length > 1;
-
-            return (
-              <motion.div 
-                key={`${product.id}-${index}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: Math.min(index * 0.03, 0.3) }}
-                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
-                onClick={() => setSelectedProduct(product)}
-              >
-                <div className="h-60 bg-gray-100 relative flex items-center justify-center overflow-hidden shrink-0">
-                  <img 
-                    src={product.image} 
-                    alt={displayTitle} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                  />
-                  <div className="hidden text-gray-400 flex-col items-center gap-2">
-                    <Box size={36} />
-                    <span className="text-[10px] font-bold tracking-widest uppercase">
-                      {isFrench ? 'IMAGE EN ATTENTE' : 'IMAGE PENDING'}
-                    </span>
+        {/* Dynamic Layout: Split into 2 Sections for Oils, Standard Grid for Other Pages */}
+        {isOilsPage ? (
+          <div className="space-y-16">
+            
+            {/* SECTION 1: Essential Oils */}
+            {essentialOils.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-200">
+                  <div className="p-2.5 bg-green-100 text-brand-green rounded-2xl">
+                    <Sparkles size={22} />
                   </div>
-
-                  {hasMultipleImages && (
-                    <span className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
-                      +{product.images.length} photos
-                    </span>
-                  )}
-                </div>
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-wider mb-2 block">
-                    {displayType}
+                  <div>
+                    <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                      {isFrench ? 'Huiles Essentielles Pures' : 'Pure Essential Oils'}
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {isFrench 
+                        ? 'Concentrés aromatiques et thérapeutiques 100% purs' 
+                        : '100% pure aromatic and therapeutic botanical extracts'}
+                    </p>
+                  </div>
+                  <span className="ml-auto text-xs font-bold text-gray-400">
+                    {essentialOils.length} {isFrench ? 'produits' : 'products'}
                   </span>
-                  <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">{displayTitle}</h3>
-                  <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">{displayDesc}</p>
-
-                  {displayBenefits && displayBenefits.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
-                      {displayBenefits.slice(0, 3).map((tag, tIdx) => (
-                        <button 
-                          key={tIdx}
-                          onClick={(e) => { e.stopPropagation(); handleTagClick(tag); }}
-                          className="inline-flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1 bg-green-50 text-brand-green rounded-full hover:bg-brand-green hover:text-white transition-colors"
-                        >
-                          <Tag size={10} />
-                          <span>{tag}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-
-                  <button className="w-full py-2.5 bg-gray-50 text-brand-green border border-gray-200 rounded-xl font-bold group-hover:bg-brand-green group-hover:text-white transition-colors mt-auto text-xs uppercase tracking-wider">
-                    {isFrench ? 'Voir Détails' : 'View Details'}
-                  </button>
                 </div>
-              </motion.div>
-            );
-          })}
-        </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {essentialOils.map((product, idx) => renderProductCard(product, idx))}
+                </div>
+              </div>
+            )}
+
+            {/* SECTION 2: Botanical & Vegetable Oils */}
+            {botanicalOils.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-8 pb-4 border-b border-gray-200">
+                  <div className="p-2.5 bg-emerald-100 text-emerald-800 rounded-2xl">
+                    <Droplets size={22} />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">
+                      {isFrench ? 'Huiles Végétales & Botaniques' : 'Botanical & Carrier Oils'}
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {isFrench 
+                        ? 'Huiles végétales pressées à froid pour la peau, les cheveux et les soins du corps' 
+                        : 'Cold-pressed carrier oils for skin, hair, and body nourishment'}
+                    </p>
+                  </div>
+                  <span className="ml-auto text-xs font-bold text-gray-400">
+                    {botanicalOils.length} {isFrench ? 'produits' : 'products'}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {botanicalOils.map((product, idx) => renderProductCard(product, idx))}
+                </div>
+              </div>
+            )}
+
+          </div>
+        ) : (
+          /* Standard Grid for all other categories */
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filteredProducts.map((product, index) => renderProductCard(product, index))}
+          </div>
+        )}
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (
@@ -342,7 +425,6 @@ if (targetType) {
                 <X size={20} />
               </button>
               
-              {/* Modal Main Image Display */}
               <div className="h-72 bg-gray-100 flex items-center justify-center relative overflow-hidden group">
                 <motion.img 
                   key={activeImageIndex}
@@ -358,7 +440,6 @@ if (targetType) {
                   <Box size={48} />
                 </div>
 
-                {/* Arrow Controls */}
                 {selectedGallery.length > 1 && (
                   <>
                     <button 
@@ -377,7 +458,6 @@ if (targetType) {
                 )}
               </div>
 
-              {/* Gallery Thumbnail Strip */}
               {selectedGallery.length > 1 && (
                 <div className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-50 border-b border-gray-100 overflow-x-auto">
                   {selectedGallery.map((imgUrl, idx) => (
@@ -396,7 +476,6 @@ if (targetType) {
                 </div>
               )}
               
-              {/* Modal Details Content */}
               <div className="p-8">
                 <span className="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">
                   {isFrench ? (selectedProduct.product_type_fr || selectedProduct.product_type) : selectedProduct.product_type}

@@ -1,0 +1,5 @@
+1- Navigating to a new page should always move the loaded page to the top
+
+2- Add E.Botanique as exclusive distributor
+
+3- On the Essential and Botanical Oils page, Split the page in two sections and Essential oils at the top and Botanical oils at the bottom
