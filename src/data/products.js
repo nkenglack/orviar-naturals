@@ -406,7 +406,7 @@ export const products = [
     "description_fr": "Poudre d’hibiscus pour la brillance des cheveux, la santé du cuir chevelu et la protection antioxydante.",
     "benefits": ["Hair Shine", "Root Strengthening", "Scalp Balance", "Antioxidant Support"],
     "benefits_fr": ["Brillance capillaire", "Renforcement des racines", "Équilibre du cuir chevelu", "Protection antioxydante"],
-    "image": "/images/products/orviar-rose-petals-powder.webp",
+    "image": "/images/products/Organic-Hibiscus-Flower-Powder-250g-1.jpeg",
     "images": [
       "/images/products/Organic-Hibiscus-Flower-Powder-250g-1.jpeg",
       "/images/products/Organic-Hibiscus-Flower-Powder-250g-2.jpg",
@@ -1548,8 +1548,7 @@ export const products = [
     "description_fr": "Huile de neem pour purifier la peau et équilibrer le cuir chevelu.",
     "benefits": ["Antibacterial Support", "Antifungal Support", "Skin Purification", "Scalp Balance"],
     "benefits_fr": ["Soutien antibactérien", "Soutien antifongique", "Purification de la peau", "Équilibre du cuir chevelu"],
-    "image": "/images/products/orviar-neem-powder.webp"
-  },
+    "image": "/images/products/Organic-Neem-Oil-100 ml.jpeg"},
   {
     "id": "huile-de-pepin-de-raisin-luttre-contre-les-pellicules-et-nourrit-le-cuir-chevelu-100-ml-copy",
     "sku": "HUILENARA0029",
@@ -1895,7 +1894,11 @@ export const products = [
     "description_fr": "Lampe de sel pour ambiance relaxante.",
     "benefits": ["Relaxation support", "Air freshness", "Calming ambiance", "Wellness atmosphere"],
     "benefits_fr": ["Favorise la relaxation", "Améliore la fraîcheur de l’air", "Ambiance apaisante", "Atmosphère bien-être"],
-    "image": "/images/products/himalayan-lamp-bowl.jpg"
+    "images": [
+      "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-1.jpeg",
+      "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-2.jpeg",
+      "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-3.jpeg"
+    ]
   },
   {
     "id": "lampe-de-sel-d-himalaya-carre-en-bois",
