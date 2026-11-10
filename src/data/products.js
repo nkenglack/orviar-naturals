@@ -408,9 +408,9 @@ export const products = [
     "benefits_fr": ["Brillance capillaire", "Renforcement des racines", "Équilibre du cuir chevelu", "Protection antioxydante"],
     "image": "/images/products/orviar-rose-petals-powder.webp",
     "images": [
-      "/images/products/orviar-rose-petals-powder.webp",
-      "/images/products/orviar-rose-petals-powder-2.jpg",
-      "/images/products/orviar-rose-petals-powder-3.webp"
+      "/images/products/Organic-Hibiscus-Flower-Powder-250g-1.jpeg",
+      "/images/products/Organic-Hibiscus-Flower-Powder-250g-2.jpg",
+      "/images/products/Organic-Hibiscus-Flower-Powder-250g-3.jpeg"
     ]
   },
   {
@@ -921,7 +921,7 @@ export const products = [
     "description_fr": "Huile de neem pour purifier la peau et équilibrer le cuir chevelu.",
     "benefits": ["Anti-Bacterial Support", "Anti-Fungal Support", "Skin Cleansing", "Scalp Balance"],
     "benefits_fr": ["Soutien antibactérien", "Soutien antifongique", "Purification de la peau", "Équilibre du cuir chevelu"],
-    "image": "/images/products/orviar-neem-powder.webp"
+    "image": "/images/products/Organic-Neem-Oil-100 ml.jpeg"
   },
   {
     "id": "huile-davocat-pression-a-froid-bio-pousser-capillaire-rapide-100-ml",
