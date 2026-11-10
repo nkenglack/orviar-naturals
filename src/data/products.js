@@ -409,7 +409,7 @@ export const products = [
     "image": "/images/products/Organic-Hibiscus-Flower-Powder-250g-1.jpeg",
     "images": [
       "/images/products/Organic-Hibiscus-Flower-Powder-250g-1.jpeg",
-      "/images/products/Organic-Hibiscus-Flower-Powder-250g-2.jpg",
+      "/images/products/Organic-Hibiscus-Flower-Powder-250g-2.jpeg",
       "/images/products/Organic-Hibiscus-Flower-Powder-250g-3.jpeg"
     ]
   },
@@ -1894,6 +1894,7 @@ export const products = [
     "description_fr": "Lampe de sel pour ambiance relaxante.",
     "benefits": ["Relaxation support", "Air freshness", "Calming ambiance", "Wellness atmosphere"],
     "benefits_fr": ["Favorise la relaxation", "Améliore la fraîcheur de l’air", "Ambiance apaisante", "Atmosphère bien-être"],
+    "image": "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-1.jpeg",
     "images": [
       "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-1.jpeg",
       "/images/products/Lampe-de-sel-rose-de-l'himalaya-modèle-Bowl-2.jpeg",
